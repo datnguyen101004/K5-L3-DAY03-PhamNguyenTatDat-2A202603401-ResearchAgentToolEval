@@ -6,9 +6,14 @@
 
 ## Team
 
-- Team:
+- Team: Research Agent Team (Nhóm 5)
 - Members:
-- Provider/model:
+  - Phạm Nguyễn Tất Đạt (Leader - 2A202603401)
+  - Nguyễn Ngọc Toàn (2A202603405)
+  - Nguyễn Tiến Đạt (2A202603452)
+  - Trần Thái Hưng (2A202603557)
+  - Nguyễn Bá Thành (2A202603499)
+- Provider/model: OpenRouter (`openai/gpt-4o-mini`)
 
 ---
 
@@ -16,15 +21,13 @@
 
 ## A1. Agent này làm được gì
 
-> 1–2 câu mô tả agent dùng để làm gì (cho team khác hiểu nhanh).
-
-Ví dụ: "Research agent: tìm tin theo từ khóa / theo tài khoản, đọc URL, tổng hợp thành digest, và gửi lên Telegram khi được xác nhận."
+Research agent chuyên sâu phục vụ tra cứu tin tức và tài liệu đa nguồn (Web qua Tavily, mạng xã hội Twitter/X qua RapidAPI, bài báo khoa học qua arXiv); tự động làm rõ yêu cầu (clarify) khi phát hiện thiếu thông tin; đọc và trích xuất nội dung URL/PDF; tổng hợp báo cáo và xuất bản trực tiếp ra file Markdown (.md) cục bộ thông qua giao diện tương tác Streamlit UI.
 
 **Link dùng thử (deploy):**
 
-> Dán link public để team khác mở thử ngay. Cách deploy nhanh bằng Cloudflare Tunnel xem README. Nếu deploy Vercel/Streamlit Cloud thì dán link đó.
+> Demo trực tiếp tại buổi thuyết trình / Chạy thử nghiệm local:
 >
-> URL: 
+> `streamlit run starter_v0/app.py`
 
 ## A2. Tool agent có
 
@@ -46,11 +49,10 @@ Ví dụ: "Research agent: tìm tin theo từ khóa / theo tài khoản, đọc 
 
 ## A3. Câu hỏi mẫu để thử
 
-> 3–5 câu hỏi/yêu cầu mẫu để team khác tự thử agent ngay.
-
-1.
-2.
-3.
+1. `Tin tức công nghệ mới nhất hôm nay và export file md` (thử nghiệm tìm kiếm web + tự động lưu báo cáo Markdown)
+2. `Tóm tắt 5 tweet mới nhất của tài khoản OpenAI` (thử nghiệm trích xuất tweet và tổng hợp đa nguồn)
+3. `Tìm 3 paper mới nhất trên arXiv về multimodal agents` (thử nghiệm tra cứu bài báo khoa học arXiv)
+4. `Đăng bản tin này lên Telegram giúp mình` (thử nghiệm cơ chế an toàn: agent dừng lại hỏi xác nhận thay vì tự ý đăng)
 
 ---
 

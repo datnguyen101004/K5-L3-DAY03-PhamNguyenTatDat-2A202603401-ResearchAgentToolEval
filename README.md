@@ -55,7 +55,7 @@ Bonus:
 - [x] `artifacts/tools.yaml`: viết lại `description` mỗi tool: làm gì, **khi nào dùng / khi nào không dùng**
 - [x] `artifacts/tools.yaml`: mô tả rõ convention args (handle không có `@`, `topic=news` cho tin tức, `timeframe`, `search_type=Top|Latest`)
 - [x] `artifacts/tools.yaml`: `send` mô tả rõ chỉ gửi khi user đã xác nhận (`confirmed=true`)
-- [ ] `v1`, `v2`, `v3`: mỗi version **một** giả thuyết, metric trước/sau trong `version_log.csv`
+- [x] `v1`, `v2`, `v3`: mỗi version **một** giả thuyết, metric trước/sau trong `version_log.csv`
 
 **Tool mới**
 - [x] `tools/<tên>/tool.py` + `TOOL.md` (frontmatter đúng contract trong `tools/README.md`)
@@ -66,12 +66,12 @@ Bonus:
 **Testing**
 - [x] `data/eval_group.json`: case cho model (routing / args / boundary), xem Step 4
 - [x] `tests/test_tools_todo.py`: unit test cho code của tool, xem Step 4b
-- [ ] `pytest`: 0 failed, 0 skipped
+- [x] `pytest`: 0 failed, 0 skipped
 
 **Demo & report**
 - [x] UI chạy được + link dùng thử / demo trực tiếp
 - [x] `chat.py`: ≥ 3 lượt live, có transcript
-- [ ] `artifacts/REPORT.md` Phần A trước 16:30, Phần B trước khi nộp
+- [x] `artifacts/REPORT.md` Phần A trước 16:30, Phần B trước khi nộp
 
 **Bonus (tuỳ chọn)**
 - [x] `send` có xác nhận trước khi gửi, có transcript chứng minh
