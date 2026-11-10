@@ -1,0 +1,424 @@
+{
+  "run_id": "v2_B_group_openrouter_20261110T112429994631",
+  "version": "v2",
+  "artifact_version": "v2+pa5375361a03c+t5b22a2476d41",
+  "prompt_hash": "a5375361a03ca68dc01559e5c4f820dfa46cf50157b457c51d736484bcdc50b5",
+  "tools_hash": "5b22a2476d41b989d5dc1e54f24ce7890e781909deb2f7afafb856ab53a6d7c0",
+  "phase": "B",
+  "suite": "group",
+  "provider": "openrouter",
+  "model": "openai/gpt-4o-mini",
+  "system_prompt": "C:\\Users\\Admin\\Project\\AI_Vin\\K5-L3-DAY03-PhamNguyenTatDat-2A202603401-ResearchAgentToolEval\\starter_v0\\artifacts\\system_prompt.md",
+  "tools": "C:\\Users\\Admin\\Project\\AI_Vin\\K5-L3-DAY03-PhamNguyenTatDat-2A202603401-ResearchAgentToolEval\\starter_v0\\artifacts\\tools.yaml",
+  "eval_cases": "data\\eval_group.json",
+  "dataset_id": "day04_v2_research_group",
+  "dataset_role": "group",
+  "description": "Case do NHÓM tự viết thêm để cover thêm trường hợp. Mỗi case cần: id, phase='B', query HOẶC turns, failure_type (thuộc allowed_failure_types), và expect (tool_calls[...] hoặc no_tool=true). Nên kèm metadata.what_it_tests.",
+  "generated_at": "2026-11-10T11:24:29",
+  "summary": {
+    "total_cases": 4,
+    "measured_cases": 4,
+    "provider_error_cases": 0,
+    "passed_cases": 4,
+    "case_accuracy": 1.0,
+    "tool_routing_accuracy": 1.0,
+    "argument_accuracy": 1.0,
+    "multiturn_accuracy": 1.0,
+    "failure_counts": {},
+    "observed_mismatch_counts": {}
+  },
+  "results": [
+    {
+      "id": "G01_name_to_handle_no_clarify",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": false,
+      "metadata": {
+        "skill": "name_to_handle",
+        "difficulty": "medium",
+        "what_it_tests": "Người dùng đã nêu rõ tên người nổi tiếng → gọi timeline với handle satyanadella, KHÔNG hỏi lại bằng clarify (chống hồi quy over-clarify)."
+      },
+      "input": "Bài đăng mới nhất của Satya Nadella là gì?",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "timeline",
+            "args": {
+              "screenname": "satyanadella"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "timeline",
+            "args": {
+              "screenname": "satyanadella"
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "missing_info",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "timeline",
+          "args": {
+            "screenname": "satyanadella"
+          },
+          "result": {
+            "tool": "get_user_tweets",
+            "screenname": "satyanadella",
+            "items": [
+              {
+                "title": "RT @brijones: Finance teams help the business understand what's happening and decide what to do next. That takes experti",
+                "summary": "RT @brijones: Finance teams help the business understand what's happening and decide what to do next. That takes expertise, and a lot of ro…",
+                "url": "https://x.com/satyanadella/status/2115838593717731488",
+                "source": "@satyanadella",
+                "date": "Thu Oct 29 16:10:05 +0000 2026",
+                "metrics": {
+                  "favorites": 0,
+                  "retweets": 11,
+                  "views": "10597"
+                }
+              },
+              {
+                "title": "Just wrapped our earnings call. It was a fast start to our fiscal year.",
+                "summary": "Just wrapped our earnings call. It was a fast start to our fiscal year.\n\nMicrosoft Cloud revenue surpassed $63B, with growth accelerating to 30% YoY.\n\nLots of innovation as we build the new tech stack for the agentic wave. A few highlights:",
+                "url": "https://x.com/satyanadella/status/2115577764300693644",
+                "source": "@satyanadella",
+                "date": "Wed Oct 28 22:53:39 +0000 2026",
+                "metrics": {
+                  "favorites": 9303,
+                  "retweets": 585,
+                  "views": "1805573"
+                }
+              },
+              {
+                "title": "4/ When it comes to infrastructure, we have a fungible fleet that allows us to dynamically allocate capacity to the high",
+                "summary": "4/ When it comes to infrastructure, we have a fungible fleet that allows us to dynamically allocate capacity to the highest value opportunities across compute, data, Foundry, and Copilot.\n\nWe are bringing capacity online faster, and getting more from the infrastructure we already have.\n\nAzure growth was broad-based across enterprise and SMB, spanning both core cloud services and AI infra.\n\nI have never been more confident in the opportunity ahead of us.",
+                "url": "https://x.com/satyanadella/status/2115577772349518171",
+                "source": "@satyanadella",
+                "date": "Wed Oct 28 22:53:41 +0000 2026",
+                "metrics": {
+                  "favorites": 204,
+                  "retweets": 12,
+                  "views": "89968"
+                }
+              },
+              {
+                "title": "5/ Read more about our results here: https://t.co/g35iNp6jXE",
+                "summary": "5/ Read more about our results here: https://t.co/g35iNp6jXE",
+                "url": "https://x.com/satyanadella/status/2115577773981073451",
+                "source": "@satyanadella",
+                "date": "Wed Oct 28 22:53:41 +0000 2026",
+                "metrics": {
+                  "favorites": 153,
+                  "retweets": 8,
+                  "views": "84007"
+                }
+              },
+              {
+                "title": "RT @jeffhollan: Building powerful long running agents requires a powerful agent harness. Now it's easier than ever insid",
+                "summary": "RT @jeffhollan: Building powerful long running agents requires a powerful agent harness. Now it's easier than ever inside of @Microsoft Fou…",
+                "url": "https://x.com/satyanadella/status/2115500553610711109",
+                "source": "@satyanadella",
+                "date": "Wed Oct 28 17:46:50 +0000 2026",
+                "metrics": {
+                  "favorites": 0,
+                  "retweets": 29,
+                  "views": "10079"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "G02_news_month_timeframe",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": false,
+      "metadata": {
+        "skill": "arg_news_timeframe",
+        "difficulty": "medium",
+        "what_it_tests": "'tin tức' → topic=news, 'tháng này' → timeframe=month, query không chứa chữ 'tin tức'."
+      },
+      "input": "Tóm tắt tin tức công nghệ trong tháng này",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "lookup",
+            "args": {
+              "query": "công nghệ",
+              "topic": "news",
+              "timeframe": "month"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "lookup",
+            "args": {
+              "query": "công nghệ",
+              "topic": "news",
+              "timeframe": "month"
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_arg_value",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "lookup",
+          "args": {
+            "query": "công nghệ",
+            "topic": "news",
+            "timeframe": "month"
+          },
+          "result": {
+            "tool": "web_search",
+            "query": "công nghệ",
+            "topic": "news",
+            "timeframe": "month",
+            "items": [
+              {
+                "title": "Mỹ đưa 'báu vật công nghệ mạnh nhất thế giới' sang Việt Nam phục vụ dự án 5.200 tỷ đồng - Đến Tesla, Meta, Microsoft cũng phải săn đón",
+                "url": "https://cafef.vn/my-dua-bau-vat-cong-nghe-manh-nhat-the-gioi-sang-viet-nam-phuc-vu-du-an-5200-ty-dong-den-tesla-meta-microsoft-cung-phai-san-don-18826102211052326.chn",
+                "source": "cafef.vn",
+                "summary": "Việc đầu tư hạ tầng tính toán AI diễn ra trong bối cảnh nhu cầu xử lý dữ liệu, phát triển mô hình AI tạo sinh và tự động hóa ngày càng tăng. Với các doanh nghiệp công nghệ, năng lực tiếp cận GPU hiệu năng cao là một trong những yếu tố quan trọng để rút ngắn thời gian nghiên cứu, thử nghiệm và triển khai sản phẩm. [...] DGX H100 là hệ thống máy chủ chuyên dụng cho các tác vụ tính toán AI hiệu năng cao. Mỗi hệ thống được trang bị 8 bộ xử lý đồ họa NVIDIA H100 Tensor Core, kết nối với nhau thông qua công nghệ NVLink nhằm tăng tốc độ trao đổi dữ liệu giữa các GPU. [...] FPT cho biết hệ thống sẽ phục vụ các nhu cầu như AI tạo sinh (Generative AI), phát triển mô hình ngôn ngữ lớn, xe tự hành và chuyển đổi xanh. Thông qua dịch vụ đám my GPU, khách hàng doanh nghiệp có thể tiếp cận năng lực tính toán mà không nhất thiết phải tự đầu tư toàn bộ hệ thống máy chủ chuyên dụng.",
+                "score": 0.29294962
+              },
+              {
+                "title": "Apple, Intel và Meta muốn mở rộng sản xuất công nghệ cao, phát triển công nghiệp bán dẫn - Tuổi Trẻ Online",
+                "url": "https://tuoitre.vn/apple-intel-va-meta-muon-mo-rong-san-xuat-cong-nghe-cao-phat-trien-cong-nghiep-ban-dan-100261014161411471.htm",
+                "source": "tuoitre.vn",
+                "summary": "Tại hội nghị có chủ đề \"Kỷ nguyên tăng trưởng mới: Đưa quan hệ đối tác kinh tế Việt Nam -Hoa Kỳ đi vào chiều su\", Phó thủ tướng thường trực nêu 5 lĩnh vực hợp tác ưu tiên giữa hai nước.\n\nBao gồm: công nghệ cao, đặc biệt là bán dẫn, trí tuệ nhn tạo và dữ liệu; năng lượng sạch và chuyển đổi xanh, ưu tiên đầu tư vào năng lượng tái tạo; phát triển chuỗi cung ứng bền vững; hợp tác tài chính, đổi mới sáng tạo và khởi nghiệp; giáo dục, đào tạo và phát triển nguồn nhn lực chất lượng cao. [...] + Mua sắm\n  + Chứng khoán\n  + Xem thêm...\n  + Giá vàng hôm nay\n Công nghệ\n  + Thiết bị\n  + Chuyển đổi số\n  + Cầu nối\n  + Nhịp sống số\n  + Xem thêm...\n  + Trải nghiệm\n  + Thị trường\n  + Thủ thuật\n  + Gia đình số\n  + Nhịp cầu\n Xe\n  + Tin tức\n  + Tư vấn mua xe\n  + Đánh giá xe\n  + Thị trường xe\n  + Xem thêm...\n  + Hỏi đáp\n  + Kỹ thuật\n  + An toàn giao thông\n Du lịch\n  + Cơ hội du lịch\n  + Đi chơi\n  + Mách bạn\n  + Quê hương\n Nhịp sống trẻ\n  + Xu hướng\n  + Theo gương Bác\n  + Khám phá\n  + Yêu [...] Những kiến nghị khác tập trung vào đào tạo nhn lực công nghệ cao, hỗ trợ doanh nghiệp Việt Nam tham gia chuỗi cung ứng toàn cầu và ứng dụng trí tuệ nhn tạo (AI) trong hoạt động sản xuất, kinh doanh.\n\nTập đoàn AES và GE Vernova mong muốn tiếp tục hợp tác phát triển nguồn điện, hệ thống truyền tải và chuỗi cung ứng thiết bị năng lượng, đáp ứng nhu cầu điện cho sản xuất và phát triển kinh tế.",
+                "score": 0.27269635
+              },
+              {
+                "title": "Gỡ điểm nghẽn để Việt Nam tận dụng lợi thế phát triển công nghệ sinh học - Báo VnExpress",
+                "url": "https://vnexpress.net/go-diem-nghen-de-viet-nam-tan-dung-loi-the-phat-trien-cong-nghe-sinh-hoc-5132898.html",
+                "source": "vnexpress.net",
+                "summary": "Công nghệ sinh học và y sinh tiên tiến được xác định là một trong 10 nhóm công nghệ chiến lược của Việt Nam, với các sản phẩm ưu tiên như vaccine, chế phẩm sinh học thế hệ mới, giống cy trồng, vật nuôi và công nghệ chế biến su nông sản, phụ phẩm. Đy là những lĩnh vực có khả năng ứng dụng rộng, phục vụ nhu cầu chăm sóc sức khỏe, sản xuất nông nghiệp và sử dụng hiệu quả tài nguyên sinh học. [...] PGS.TS Huỳnh Thành Đạt, Phó trưởng Ban Tuyên giáo Trung ương, đánh giá công nghệ sinh học là lĩnh vực liên quan đến năng lực làm chủ công nghệ, khả năng chuyển hóa tri thức thành giá trị kinh tế và sự gắn kết giữa nghiên cứu với yêu cầu phát triển đất nước. Tuy nhiên, \"tiềm năng công nghệ không tự động chuyển thành giá trị kinh tế\", ông nói.\n\nTS Trần Văn Tùng và PGS.TS Huỳnh Thành Đạt trao đổi tại hội thảo ngày 15/10. Ảnh: Hà Tuấn [...] Theo ông, các nghiên cứu công nghệ sinh học hiện còn phn mảnh, chưa dựa trên các bài toán cụ thể của doanh nghiệp. Để cải thiện, bài toán từ doanh nghiệp, nhu cầu thị trường phải trở thành căn cứ xác định ưu tiên nghiên cứu. Doanh nghiệp đưa ra vấn đề và đồng tài trợ để giúp nhà khoa học định hướng công nghệ theo nhu cầu thực tế.",
+                "score": 0.26793176
+              },
+              {
+                "title": "Phát huy nguồn lực trí thức Việt Nam tại Nhật Bản để giải quyết các bài toán công nghệ thực tiễn - Cổng Thông tin điện tử Bộ Khoa học và Công nghệ",
+                "url": "https://mst.gov.vn/phat-huy-nguon-luc-tri-thuc-viet-nam-tai-nhat-ban-de-giai-quyet-cac-bai-toan-cong-nghe-thuc-tien-197261109120235782.htm",
+                "source": "mst.gov.vn",
+                "summary": "doanh nghiệp trong nước để đề xuất, triển khai các nhiệm vụ khoa học và công nghệ, tập trung giải quyết những bài toán thực tiễn, tạo ra sản phẩm và giá trị cụ thể cho nền kinh tế. [...] Quay lại\n\nMột số từ viết tắt trên cổng TTĐT Bộ   In\n\nChia sẻ facebook Chia sẻ twitter Chia sẻ zalo Gửi mail Sao chép đường dẫn\n\n\n\nPhản ánh, kiến nghị văn bản   \nquy phạm pháp luật\n\nNghiên cứu cơ bản và ứng dụng công nghệ cao.\n\n Xem thêm\n\n\n\nDịch vụ hành chính công\n\nThông tin về Dịch vụ hành chính công Bộ Khoa học và Công nghệ; Hệ thống thông tin giải quyết TTHC\n\n Xem thêm\n\n\n\nSản phẩm dịch vụ,   \nKHCN, ĐMST\n\nThông tin giới thiệu về các sản phẩm, dịch vụ ngành Khoa học và Công nghệ\n\n Xem thêm [...] Khoa học và Công nghệ Đổi mới sáng tạo Chuyển đổi số Bưu chính, Viễn thông Sở hữu trí tuệ Tiêu chuẩn, đo lường, chất lượng Năng lượng nguyên tử\n Multimedia\n THƯ ĐIỆN TỬ\n\nKhác\n\n Videos\n Infographic\n Ảnh\n Voice\n Nhiệm vụ trọng tm\n\nChọn ngôn ngữ\n\nVN  Vietnamese   GB  English\n\n   Aa   \n\nChia sẻ facebook Chia sẻ zalo Gửi mail Sao chép đường dẫn\n\nMột số từ viết tắt trên cổng TTĐT Bộ   In\n\nQuay lại\n\nTin tức Sự kiện",
+                "score": 0.2512897
+              },
+              {
+                "title": "Việt Nam - Nhật Bản hoàn tất chuyển giao công nghệ tế bào trị ung thư",
+                "url": "https://baochinhphu.vn/viet-nam-nhat-ban-hoan-tat-chuyen-giao-cong-nghe-te-bao-tri-ung-thu-102261109161114438.htm",
+                "source": "baochinhphu.vn",
+                "summary": "Công nghệ tế bào gốc trung mô (MSC) hiện được nghiên cứu, phát triển trong nhiều hướng ứng dụng liên quan đến bệnh lý tim mạch, thần kinh (đột quỵ, sa sút trí tuệ), tiểu đường, bệnh phổi tắc nghẽn mạn tính (COPD), trẻ hóa da… Giải pháp tế bào miễn dịch tự nhiên (NK) mở ra cơ hội ứng dụng mới trong miễn dịch trị liệu, có thể được phối hợp với các phương pháp điều trị ung thư đa mô thức khác, như phẫu thuật, hóa trị, xạ trị và điều trị đích. [...] Theo TS.BS.CKII Phạm Xun Dũng, Giám đốc Trung tm Ung bướu, Bệnh viện Đa khoa Tm Anh TP.HCM, liệu pháp miễn dịch đang trở thành một trong những hướng tiến bộ quan trọng của điều trị ung thư hiện đại. Công nghệ này hiện được ứng dụng ngày càng rộng rãi trong điều trị ung thư, góp phần thay đổi chiến lược điều trị và cải thiện kết quả ở nhiều loại ung thư như ung thư phổi, dạ dày, đại trực tràng, bàng quang, thận, gan, ung thư vú… Ưu điểm của liệu pháp miễn dịch là khả năng nhận diện và hỗ trợ [...] GS.TS Matsuo Yoshinobu, nhà khoa học hàng đầu tại Tập đoàn Y tế Grandsoul, chuyên gia Công nghệ cấp cao tại Viện Nghiên cứu Miễn dịch Grandsoul Nara, cho biết công nghệ tế bào gốc, tế bào miễn dịch đòi hỏi yêu cầu đặc biệt nghiêm ngặt về chuyên môn và kiểm soát chất lượng. Ông đánh giá Hệ thống Bệnh viện Đa khoa Tm Anh có nền tảng công nghệ, nhn sự và các quy trình kiểm soát chất lượng nghiêm túc, bài bản, là điều kiện thuận lợi để tiếp nhận và phát triển các công nghệ tiên tiến từ Nhật Bản rất",
+                "score": 0.24157926
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "G03_multi_switch_to_web_only",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": true,
+      "metadata": {
+        "skill": "multiturn_switch_source",
+        "difficulty": "hard",
+        "what_it_tests": "Người dùng đã bỏ nguồn mạng xã hội → chỉ gọi lookup, KHÔNG gọi thừa social_search; carry chủ đề Claude + timeframe=week."
+      },
+      "input": [
+        {
+          "role": "user",
+          "content": "Tìm tweet về Claude"
+        },
+        {
+          "role": "user",
+          "content": "Thôi, bỏ mạng xã hội, tìm tin tức trên web đi"
+        },
+        {
+          "role": "user",
+          "content": "Vẫn chủ đề Claude, trong tuần này"
+        }
+      ],
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "lookup",
+            "args": {
+              "query": "Claude",
+              "topic": "news",
+              "timeframe": "week"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "lookup",
+            "args": {
+              "query": "Claude",
+              "topic": "news",
+              "timeframe": "week"
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "unnecessary_tool",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "lookup",
+          "args": {
+            "query": "Claude",
+            "topic": "news",
+            "timeframe": "week"
+          },
+          "result": {
+            "tool": "web_search",
+            "query": "Claude",
+            "topic": "news",
+            "timeframe": "week",
+            "items": [
+              {
+                "title": "How scientists use Claude \\ Anthropic",
+                "url": "https://www.anthropic.com/research/how-researchers-use-claude",
+                "source": "anthropic.com",
+                "summary": "Where scientists use Claude. Relative to the number of researchers in each field, Claude is used more in the formal sciences, such as computer science, mathematics, and statistics, and less in health and lab-based physical sciences. Scientists primarily use Claude to analyze data and to write. Data analysis alone accounts for about one-third of sessions on Claude and nearly half of sessions on Claude Code. Scientists use it less for idea generation and data gathering, even though, in an [...] Claude use is also disproportionately high in predominantly cognitive tasks. By contrast, Claude use is low for physical and interpersonal tasks. Claude use is also lower for tasks where regulatory barriers limit AI assistance. Overall, across the spectrum of highly specialized research tasks, usage and capability measures are strongly related. [...] Claude use across scientific fields. Each dot represents a field. The horizontal axis shows the field’s share of researchers, and the vertical axis shows the field’s share of research sessions, both on log scales. The top panel shows sessions from Claude; the bottom panel shows sessions from Claude Code.",
+                "score": 0.5798055
+              },
+              {
+                "title": "Claude Fable 5.2 in GitHub Copilot - GitHub Changelog",
+                "url": "https://github.blog/changelog/2026-11-09-claude-fable-5-2-in-github-copilot",
+                "source": "github.blog",
+                "summary": "Claude Fable 5.2, Anthropic’s newest Fable model, is now generally available in GitHub Copilot. You can use it for complex, multistep coding tasks across large codebases. In early testing, Fable 5.2 solved more tasks than Claude Fable 5.1 while using fewer steps and tool calls. It also completed hard tasks that earlier models missed. [...] Claude Fable 5.2 requires data retention by default. When Claude Fable 5.2 is used, Anthropic retains data, including prompts and outputs, to operate safety classifiers that detect harmful use. Retained data is not used to train Anthropic’s models. Other Claude models, except for Fable 5, Fable 5.1, and Fable 5.2, continue to operate under zero data retention (ZDR). [...] Eligible customers can use Claude Fable 5.2, Claude Fable 5.1, and Claude Fable 5 with zero data retention through the end of the calendar year under a time-bound exemption while Anthropic rolls out Enterprise Frontier Safeguards (EFS). After that point, continued use of the models will require EFS, which will enable automated safety monitoring while also giving eligible customers more options for how their data is retained. This includes the option to use storage and encryption keys under",
+                "score": 0.55796635
+              },
+              {
+                "title": "Bringing Claude models in Microsoft Copilot into the EU Data Boundary | Microsoft Copilot Blog",
+                "url": "https://www.microsoft.com/en-us/copilot/blog/2026/11/05/bringing-claude-models-in-microsoft-copilot-into-the-eu-data-boundary",
+                "source": "microsoft.com",
+                "summary": "Today, we’re announcing that Claude models by Anthropic in Microsoft Copilot are coming into the EU Data Boundary, strengthening model choice for organizations across Europe. This means customers will no longer need to choose between access to Claude models and the Microsoft regional data-processing commitments they rely on. By the end of 2026, organizations in the European Union (EU) and the European Free Trade Association (EFTA) will be able to use Claude models across Copilot experiences, [...] Copilot brings leading models from Anthropic and other providers into one governed experience grounded in your work, so your people can match the right model to the task at hand. Claude models already power work across Copilot experiences such as Chat, Copilot in Microsoft 365 apps, Copilot Cowork, and Copilot Code. [...] Organizations that haven’t enabled Claude models yet can turn them on at any time, with processing moving into the EU Data Boundary once available. The setting is disabled by default in the EU and EFTA, and admins can enable it for all users or for selected users and groups in the Microsoft 365 admin center. For details, see Claude models in Microsoft Online Services on Microsoft Learn. We’ll share more details as we get closer to availability.",
+                "score": 0.44622982
+              },
+              {
+                "title": "Claude",
+                "url": "https://linkedin.com/in/claude-bat-324033160",
+                "source": "linkedin.com",
+                "summary": "# Claude\n\nHeadline: responsable comptabilité et RH chez EURETEQ\nCurrent role: Retraité\nSeniority: Specialist, Other\nLocation: Tarbes, Occitanie, France\nExperience: 39 years 6 months\nLinkedIn: www.linkedin.com/in/claude-bat-324033160 · 2,316 followers\n\n## Experience\n- Retraité at EURETEQ (Feb 2026 to present)\n- responsable comptabilité et RH at EURETEQ (Feb 1987 to Feb 2026)\n\n## Education\n- IUT Tarbes, DUT Comptabilité et finance [...] ## Skills\nhuman resources, accounting [...] - Liked By: 💭 Et si la plus grande réussite n’était pas celle que l’on inscrit sur un diplôme, mais celle que l’on construit en devenant une meilleure...",
+                "score": 0.36942935
+              },
+              {
+                "title": "Claude Code settings files expose thousands of secrets on GitHub - Ars Technica",
+                "url": "https://arstechnica.com/ai/2026/11/claude-code-settings-files-expose-thousands-of-secrets-on-github",
+                "source": "arstechnica.com",
+                "summary": "The leak stems from the way Claude Code handles user approval for automated shell commands. When a user chooses the “Yes, and don’t ask again” option to approve running a command, that choice gets stored as part of a rule in the local “.claude/settings.local.json” file on the user’s computer. That rule is sometimes coded as a pattern, but the command itself is often written to that settings file as is, including any sensitive information that may be embedded within it. [...] Claude Code is leaking sensitive information on public GitHub instances thanks to a partial oversight in the way its settings files are handled. That’s the finding of AI security researchers at Apiiro, who discovered thousands of secrets, including database passwords, API tokens, and root logins, amid Claude Code settings files embedded in GitHub repositories.",
+                "score": 0.3684744
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "G04_multi_confirm_then_send",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": true,
+      "metadata": {
+        "skill": "multiturn_confirm_send",
+        "difficulty": "hard",
+        "what_it_tests": "Sau khi người dùng xác nhận rõ ràng ở lượt cuối → gọi send với confirmed=true (không hỏi lại thêm lần nữa)."
+      },
+      "input": [
+        {
+          "role": "user",
+          "content": "Đăng bản tin AI hôm nay lên Telegram"
+        },
+        {
+          "role": "user",
+          "content": "Nội dung: OpenAI ra mắt mô hình mới hôm nay"
+        },
+        {
+          "role": "user",
+          "content": "Có, mình xác nhận, gửi đi"
+        }
+      ],
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "send",
+            "args": {
+              "confirmed": true
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "send",
+            "args": {
+              "text": "OpenAI ra mắt mô hình mới hôm nay",
+              "confirmed": true
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_boundary",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "send",
+          "args": {
+            "text": "OpenAI ra mắt mô hình mới hôm nay",
+            "confirmed": true
+          },
+          "result": {
+            "tool": "send_telegram",
+            "status": "sent"
+          }
+        }
+      ]
+    }
+  ]
+}
