@@ -1,0 +1,252 @@
+{
+  "run_id": "v1_B_group_openrouter_20261110T114311258911",
+  "version": "v1",
+  "artifact_version": "v1+p559e84c322a2+t5b22a2476d41",
+  "prompt_hash": "559e84c322a251ac59e659505eb6b0c22be963131f45d1aba76686e2821daa8b",
+  "tools_hash": "5b22a2476d41b989d5dc1e54f24ce7890e781909deb2f7afafb856ab53a6d7c0",
+  "phase": "B",
+  "suite": "group",
+  "provider": "openrouter",
+  "model": "openai/gpt-4o-mini",
+  "system_prompt": "D:\\VinUni\\Lab3\\K5-L3-DAY03-PhamNguyenTatDat-2A202603401-ResearchAgentToolEval\\starter_v0\\artifacts\\system_prompt.md",
+  "tools": "D:\\VinUni\\Lab3\\K5-L3-DAY03-PhamNguyenTatDat-2A202603401-ResearchAgentToolEval\\starter_v0\\artifacts\\tools.yaml",
+  "eval_cases": "data\\eval_group.json",
+  "dataset_id": "day04_v2_research_group",
+  "dataset_role": "group",
+  "description": "Case do NHÓM tự viết thêm để cover thêm trường hợp. Mỗi case cần: id, phase='B', query HOẶC turns, failure_type (thuộc allowed_failure_types), và expect (tool_calls[...] hoặc no_tool=true). Nên kèm metadata.what_it_tests.",
+  "generated_at": "2026-11-10T11:43:11",
+  "summary": {
+    "total_cases": 2,
+    "measured_cases": 2,
+    "provider_error_cases": 0,
+    "passed_cases": 2,
+    "case_accuracy": 1.0,
+    "tool_routing_accuracy": 1.0,
+    "argument_accuracy": 1.0,
+    "multiturn_accuracy": 1.0,
+    "failure_counts": {},
+    "observed_mismatch_counts": {}
+  },
+  "results": [
+    {
+      "id": "G01_general_web_research_limit",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": false,
+      "metadata": {
+        "skill": "general_web_research_and_limit",
+        "difficulty": "medium",
+        "what_it_tests": "Phân biệt tìm thông tin nền tảng với tin tức (lookup topic=general) và trích giới hạn max_results=3."
+      },
+      "input": "Tìm thông tin nền tảng về quantum computing trên web, không cần tin tức mới; lấy tối đa 3 kết quả.",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "lookup",
+            "args": {
+              "query": "quantum computing",
+              "topic": "general",
+              "max_results": 3
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "lookup",
+            "args": {
+              "query": "quantum computing",
+              "topic": "general",
+              "max_results": 3
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_arg_value",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "lookup",
+          "args": {
+            "query": "quantum computing",
+            "topic": "general",
+            "max_results": 3
+          },
+          "result": {
+            "tool": "web_search",
+            "query": "quantum computing",
+            "topic": "general",
+            "timeframe": "week",
+            "items": [
+              {
+                "title": "QTUM: The Next Generation Quantum Computing & AI ETF",
+                "url": "https://www.defianceetfs.com/qtum",
+                "source": "defianceetfs.com",
+                "summary": "What is a quantum computer? A quantum computer leverages quantum mechanics to perform calculations far beyond classical computers. Unlike traditional bits, qubits can exist in multiple states simultaneously through superposition and entanglement, enabling unparalleled computational power. [...] Index Description: BlueStar Quantum Computing and Machine Learning Index (BQTUM) tracks liquid companies in the global quantum computing and machine learning industries, including products and services related to quantum computing or machine learning, such as the development or use of quantum computers or computing chips, superconducting materials, applications built on quantum computers, embedded artificial intelligence chips, or software specializing in the perception, collection, [...] ### Quantum Fund.\n\nQuantum Computing brings paradigmatic changes in simulation, optimization and sampling capabilities.\n\n### Machine Learning.\n\nFinance, risk management, cybersecurity, materials science, energy, and logistics will all be transformed by the implementation of QC-supported ML.\n\n### Artificial Intelligence.\n\nThe AI revolution is upon us. Quantum supremacy has the potential to supercharge the power of AI towards unprecedented sophistication.\n\n### Next Gen Disruptive Technology.",
+                "score": 0.8891543
+              },
+              {
+                "title": "IBM, Quantinuum and Intel signal a new phase in the quantum computing race | Network World",
+                "url": "https://www.networkworld.com/article/4245266/ibm-quantinuum-and-intel-signal-a-new-phase-in-the-quantum-computing-race.html",
+                "source": "networkworld.com",
+                "summary": "“Quantum computing is increasingly being developed as part of a larger hybrid environment alongside HPC and AI infrastructure,” West told Network World. “And we are seeing more collaboration among national laboratories, quantum hardware providers, and classical computing vendors.”\n\n“A quantum computer doesn’t work on its own,” says Jerry Chow, CTO of Quantum-Centric Supercomputing at IBM. “It needs to work together with other classical computing resources.” [...] You can think of a quantum computer as similar to a graphics accelerator, Chow told Network World, where the GPU steps in when needed to handle graphics-related tasks or matrix operations while the CPU continues to handle most other common tasks. [...] Meanwhile, last week, Intel announced that it would buy quantum computing software company Classiq. The idea is to combine Classiq’s development platform with Intel’s spin-qubit manufacturing and existing software in order to transform Intel’s Quantum Computing Group “into a full-stack quantum computing business,” according to Intel CEO Lip-Bu Tan.\n\nThe deal is reportedly valued at between $1.9 and $2.3 billion, making it the largest quantum-related acquisition to date.",
+                "score": 0.8839694
+              },
+              {
+                "title": "The Quantum Codex: Where Physics, AI, and Software Converge",
+                "url": "https://medium.com/@parserdigital/the-quantum-codex-where-physics-ai-and-software-converge-8a98c28058ae",
+                "source": "medium.com",
+                "summary": "Why are governments, universities and technology companies investing billions of dollars in quantum computing?\n\nQuantum computing is ultimately about understanding nature well enough to engineer it. Throughout history, every major scientific breakthrough has started the same way. We first observed nature. Then we understood it. Finally, we learned how to reproduce it. As examples: [...] Quantum computing pushes that mindset even further. Rather than writing software that always computes a single deterministic answer, we often design circuits whose objective is to make the correct answeroverwhelmingly more likely than all the alternatives.\n\nAs software engineers, we are already beginning to learn this new way of thinking through AI. Quantum computing simply extends that journey.\n\nPress enter or click to view image in full size\n\nImage 30 [...] Quantum computing is not yet ready to replace today’s enterprise platforms, and probably never will in the way the expression suggests. But that is not what makes it important. Cloud computing did not replace every computer. GPUs did not replace CPUs. Artificial Intelligence is not replacing every form of software.\n\nEach introduced a new capability and a new abstraction that changed what engineers could build. Quantum computing may become the next one.",
+                "score": 0.8619225
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "G02_multiturn_paper_search_refinement",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": true,
+      "metadata": {
+        "skill": "multiturn_paper_search_refinement",
+        "difficulty": "hard",
+        "what_it_tests": "Lượt 1 xác định chủ đề arXiv; lượt 2 giữ chủ đề, bổ sung max_results=2 và đổi sắp xếp sang lastUpdatedDate. Chấm tool call cuối cùng."
+      },
+      "input": [
+        {
+          "role": "user",
+          "content": "Tìm các paper arXiv về multimodal retrieval-augmented generation."
+        },
+        {
+          "role": "user",
+          "content": "Chỉ lấy 2 kết quả và ưu tiên paper được cập nhật gần đây nhất."
+        }
+      ],
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "papers",
+            "args": {
+              "query": "multimodal retrieval-augmented generation",
+              "max_results": 2,
+              "sort_by": "lastUpdatedDate"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "papers",
+            "args": {
+              "query": "multimodal retrieval-augmented generation",
+              "max_results": 2,
+              "sort_by": "lastUpdatedDate"
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_arg_value",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "papers",
+          "args": {
+            "query": "multimodal retrieval-augmented generation",
+            "max_results": 2,
+            "sort_by": "lastUpdatedDate"
+          },
+          "result": {
+            "tool": "arxiv_search",
+            "query": "multimodal retrieval-augmented generation",
+            "api_query": "all:multimodal AND all:retrieval-augmented AND all:generation",
+            "total_results": 755,
+            "items": [
+              {
+                "arxiv_id": "2611.11346v1",
+                "title": "IntentLens: Grounding Underspecified Multimodal Queries for Recommendation via Tool-Augmented Reasoning",
+                "summary": "As intelligent personal assistants are increasingly deployed in real-world scenarios, recommendation paradigms are shifting from passive preference matching to inferring user intent from underspecified multimodal inputs. In practical interactions, users typically issue a reference image paired with a vague natural language query, keeping key visual attributes, personalized preferences, and item-side constraints implicit. Existing recommendation methods either leverage historical user interactions augmented with multimodal item features or assume fully articulated textual queries; both paradigms struggle to resolve underspecified multimodal queries for accurate item matching. To address this limitation, we propose IntentLens, a tool-augmented recommendation framework that grounds ambiguous multimodal queries into query-relevant evidence prior to user-item matching. IntentLens follows a ground-then-rank pipeline: a shared multimodal LLM leverages visual tools, user memory modules, and item attribute retrieval tools to (i) infer latent user intent from image-text inputs and (ii) augment each candidate item with fine-grained, query-conditioned evidence. Subsequently, a lightweight ranker scores candidates based on the grounded representations. To facilitate research in this novel setting, we construct two benchmarks with underspecified multimodal queries, namely \\textsc{GoogleReview-MMTool} and \\textsc{Yelp-MMTool}. Extensive experiments on these benchmarks demonstrate that IntentLens outperforms competitive MLLM and retrieval baselines, and exhibits strong generalization to unseen categories and datasets.",
+                "authors": [
+                  "Xiao Chen",
+                  "Dong Fang",
+                  "Haitao Li",
+                  "Qing Li"
+                ],
+                "published": "2026-11-08T12:49:15Z",
+                "updated": "2026-11-08T12:49:15Z",
+                "url": "http://arxiv.org/abs/2611.11346v1",
+                "pdf_url": "https://arxiv.org/pdf/2611.11346v1",
+                "source": "arxiv.org",
+                "primary_category": "cs.IR",
+                "categories": [
+                  "cs.IR"
+                ]
+              },
+              {
+                "arxiv_id": "2607.24743v4",
+                "title": "ClinFusion: A Vision-Centric Multimodal LLM System for Holistic Medical Understanding",
+                "summary": "Multimodal large language models (MLLMs) hold immense potential to revolutionize clinical practice, yet deploying them in the medical domain is fundamentally a vision-centric challenge: models must absorb knowledge from heterogeneous 2D and 3D medical images, and evaluation protocols must align with radiologists' clinical practice and provide an accurate, fine-grained and factualness-driven assessment. In this paper, we introduce ClinFusion, a vision-centric MLLM designed for holistic medical understanding that systematically addresses these limitations. We propose a compositional and cascaded vision encoder architecture featuring a Cascade Spatial-Aware Locality Fusion operator that unifies diverse 2D and native 3D medical image understanding within a fused encoder. We further introduce a vision-grounded evaluation framework, including MedIF-Bench for instruction-following assessment and a region-of-interest-grounded method for clinically aligned and factualness-driven report generation evaluation. We show that ClinFusion sets a new state-of-the-art across a comprehensive suite of 2D and 3D multimodal medical benchmarks---spanning visual question answering, report generation, and instruction following---as well as textual medical tasks, outperforming leading open-source medical MLLMs (\\textit{e.g.}, Hulu-Med, Lingshu) on 20 out of 24 benchmarks and demonstrating multimodal capabilities better than powerful proprietary models such as GPT-5.2 and Gemini-3-Flash on 13 out of 16 benchmarks, and can be further augmented with agentic tool use for retrieval-augmented and tool-assisted clinical workflows. A blinded evaluation by board-certified radiologists confirms that ClinFusion produces the highest-ranked reports, and validates our RoI-grounded metric as achieving the strongest correlation with expert judgment among all automatic evaluation metrics examined.",
+                "authors": [
+                  "Hangjie Yuan",
+                  "Yichen Qian",
+                  "Zhiwei Tang",
+                  "Xianzhe Xu",
+                  "Sicheng Yang",
+                  "Lirong Wu",
+                  "Jinwang Wang",
+                  "Pengju Wang",
+                  "Zhitao Zeng",
+                  "Yizeng Han",
+                  "Yan Xing",
+                  "Shengxuan Luo",
+                  "Tao Feng",
+                  "Qing Xie",
+                  "Weigen Yao",
+                  "Yi Yang",
+                  "Zuozhu Liu",
+                  "Jiasheng Tang",
+                  "Xiaomao Yu",
+                  "Shaocheng Wang",
+                  "Jitao Wang",
+                  "Jiahong Dong",
+                  "Weihua Chen",
+                  "Feng Xu",
+                  "Fan Wang"
+                ],
+                "published": "2026-07-27T17:59:49Z",
+                "updated": "2026-11-07T13:56:17Z",
+                "url": "http://arxiv.org/abs/2607.24743v4",
+                "pdf_url": "https://arxiv.org/pdf/2607.24743v4",
+                "source": "arxiv.org",
+                "primary_category": "cs.CV",
+                "categories": [
+                  "cs.CV",
+                  "cs.AI",
+                  "cs.CL"
+                ]
+              }
+            ],
+            "rate_limit_note": "arXiv may return 429 if called too frequently; this tool waits at least 3 seconds between requests in-process."
+          }
+        }
+      ]
+    }
+  ]
+}

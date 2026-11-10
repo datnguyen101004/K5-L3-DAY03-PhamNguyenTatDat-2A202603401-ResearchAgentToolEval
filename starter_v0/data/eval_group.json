@@ -3,5 +3,63 @@
   "dataset_role": "group",
   "description": "Case do NHÓM tự viết thêm để cover thêm trường hợp. Mỗi case cần: id, phase='B', query HOẶC turns, failure_type (thuộc allowed_failure_types), và expect (tool_calls[...] hoặc no_tool=true). Nên kèm metadata.what_it_tests.",
   "allowed_failure_types": ["wrong_tool", "wrong_arg_value", "wrong_boundary", "unnecessary_tool", "out_of_scope", "missing_info"],
-  "cases": []
+  "cases": [
+    {
+      "id": "G07_general_web_research_limit",
+      "phase": "B",
+      "suite": "group",
+      "query": "Tìm thông tin nền tảng về quantum computing trên web, không cần tin tức mới; lấy tối đa 3 kết quả.",
+      "failure_type": "wrong_arg_value",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "lookup",
+            "args": {
+              "query": "quantum computing",
+              "topic": "general",
+              "max_results": 3
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "general_web_research_and_limit",
+        "difficulty": "medium",
+        "what_it_tests": "Phân biệt tìm thông tin nền tảng với tin tức (lookup topic=general) và trích giới hạn max_results=3."
+      }
+    },
+    {
+      "id": "G08_multiturn_paper_search_refinement",
+      "phase": "B",
+      "suite": "group",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Tìm các paper arXiv về multimodal retrieval-augmented generation."
+        },
+        {
+          "role": "user",
+          "content": "Chỉ lấy 2 kết quả và ưu tiên paper được cập nhật gần đây nhất."
+        }
+      ],
+      "failure_type": "wrong_arg_value",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "papers",
+            "args": {
+              "query": "multimodal retrieval-augmented generation",
+              "max_results": 2,
+              "sort_by": "lastUpdatedDate"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "multiturn_paper_search_refinement",
+        "difficulty": "hard",
+        "what_it_tests": "Lượt 1 xác định chủ đề arXiv; lượt 2 giữ chủ đề, bổ sung max_results=2 và đổi sắp xếp sang lastUpdatedDate. Chấm tool call cuối cùng."
+      }
+    }
+  ]
 }
