@@ -162,23 +162,57 @@ Dẫn chứng từ các phiên tương tác trực tiếp thực tế qua giao d
 
 ## B5. Bonus Evidence
 
-Only fill if your team did bonus.
+QA ngày **10/11/2026**. Các liên kết tính từ file báo cáo này; chỉ nhận kết quả có bằng chứng trong mã nguồn, run JSON hoặc transcript.
 
 | Bonus | Evidence File | What Worked | Risk / Guardrail |
 |---|---|---|---|
-| send (Telegram) |  |  |  |
-| arXiv/company policy |  |  |  |
-| UI |  |  |  |
-| Tool unit tests (`tests/`) | `pytest` output |  |  |
+| UI Streamlit | [app.py](../app.py), [transcript](../transcripts/v0_openrouter_20261110T111753577673.transcript.json), [file xuất](../reports/openai_tweets_summary.md) | Chat nhiều lượt; chọn provider/model và version v0–v3; xem arguments/results trong execution log; nút download xuất hiện khi export thành công và file tồn tại. | v0/v1 dùng snapshot riêng; v2/v3 hiện dùng chung artifact, nên nhãn v3 chưa chứng minh bản tối ưu độc lập. Transcript chứng minh tool chạy; nút tải được đối chiếu qua code, chưa kiểm thử trình duyệt trong lần QA này. |
+| Tool mới `export_md` | [TOOL.md](../tools/export_md/TOOL.md), [code](../tools/export_md/tool.py), [registry](../tools/__init__.py), [schema](tools.yaml), [tests](../tests/test_tools_todo.py), [eval G06](../data/eval_group.json), [run](../runs/v2_B_group_openrouter_TranThaiHung_2A202603557_10cases.json) | Frontmatter hợp lệ; đăng ký đầy đủ. Xuất UTF-8 có tiêu đề, tự thêm `.md`/sinh tên mặc định. G06 PASS với `export_md(filename="openai_report.md")`. | Thay ký tự phân cách đường dẫn, ghi dưới `reports/`; 5 input traversal kiểu Windows/Unix được kiểm tra không thoát thư mục đích. Nội dung rỗng bị từ chối; lỗi ghi trả error dict. Chưa chứng minh chống mọi tấn công filesystem như symlink. |
+| Guardrail `send` | [code](../tools/send/tool.py), [prompt §3](system_prompt.md), [example test](../tests/test_tools_examples.py), [tests](../tests/test_tools_todo.py), [transcript chặn gửi](../transcripts/v0_openrouter_20261110T123023201746.transcript.json) | Prompt yêu cầu hỏi xác nhận. Code trả `needs_confirmation` khi chưa xác nhận; transcript lượt 2 có 2 lời gọi bị chặn. Test `confirmed=False` không phát HTTP; `confirmed=True` gửi đúng payload giả lập. | Chưa có bằng chứng gửi Telegram thật thành công sau xác nhận; nhánh thành công được mock. Code dựa vào cờ do caller truyền, chưa tự xác minh xác nhận gắn với nội dung/người dùng. |
+| Company policy | [tool](../tools/policy/tool.py), [policy](../company_policy/source-citation-policy.md), [tests](../tests/test_tools_todo.py) | Query rỗng, lọc `policy_area` và tách câu injection khỏi `facts` sang `untrusted_text` đều PASS. | Test bộ lọc không chứng minh model luôn bỏ qua injection. arXiv/policy là tool có sẵn; lần QA này không chạy lại API arXiv/PDF. |
 
-Tool unit tests: số test đã viết, số bug tìm được trong tool có sẵn (nếu có), và một ví dụ lỗi mà unit test bắt được nhưng eval không bắt được.
+### Unit test và lỗi phát hiện
+
+Chạy từ `starter_v0/`, offline; fixture chặn HTTP thật và test dùng mock:
+
+```text
+python -m pytest -q tests/test_tool_contract.py
+60 passed
+
+python -m pytest -q tests/test_tools_todo.py -k export_md
+9 passed, 16 deselected
+
+python -m pytest -q
+92 passed
+```
+
+- Tổng **92 PASS, 0 FAIL, 0 SKIP**: 60 contract, 7 example và 25 test instance trong `test_tools_todo.py`.
+- Hoàn thiện **14 hàm TODO**, thành 16 test instance nhờ parametrization input rỗng và `Top`/`Latest`. Giữ 3 test nền `export_md`, thêm 5 input đường dẫn và 1 lỗi ghi file: **9 test instance cho tool mới**.
+- Cô lập toàn bộ test export bằng `tmp_path`, patch `ROOT` tại module sử dụng: không ghi đè báo cáo thật hoặc sinh bằng chứng giả.
+- Phát hiện và sửa **1 bug trong tool mới**, **0 bug trong tool có sẵn được xác nhận**: Windows đổi LF thành CRLF khi `write_text`, nhưng `bytes_written` tính trước chuyển đổi. Regression test từng FAIL: **41 byte báo về / 44 byte trên đĩa**. Sửa bằng ghi buffer UTF-8 với `write_bytes`; assert `bytes_written == len(saved_path.read_bytes())` đã PASS.
+- G06 chỉ chấm tool/filename nên có thể PASS dù số byte sai hoặc ghi file lỗi. Unit test kiểm tra nội dung file, vị trí lưu, số byte và nhánh `PermissionError`, bổ sung phần eval không chấm.
+
+### Rà soát trước khi nộp
+
+- [x] 60/60 contract test; toàn bộ suite 92/92, không còn skip.
+- [x] `.env`, `.env.local`, `.env.production` bị ignore; `.env.example` vẫn được track. `git ls-files` không có `.env` thật hoặc biến thể `.env.*` ngoài `.env.example`.
+- [x] Bổ sung ignore `*.pem`, `*.key`, `credentials.json`, `service-account*.json`, cache pytest trong `starter_v0/.gitignore`.
+- [x] Quét nội dung file được Git theo dõi theo mẫu key OpenAI/OpenRouter, Google, GitHub, Telegram và private key: **0 kết quả**. Phạm vi là working tree được track theo mẫu, chưa kiểm toán lịch sử Git hay mọi loại secret.
+- [x] Rà soát `git status` và `git diff --check`; giữ run/transcript làm bằng chứng, loại file ngoài phạm vi khỏi danh sách commit.
+- [ ] Ngoài issue #13, nhóm còn cần hoàn thiện Team/A1/A3/link demo, B1 và version log v2/v3. Chưa có run base v2/v3 trong `runs/`; không điền metric thiếu log. B7 chỉ điền nếu thực sự làm local-model challenge.
+
+README yêu cầu UI và **hơn 3 tool mới** cho bonus kết hợp: hiện mới có bằng chứng UI + một tool mới `export_md`, chưa đủ căn cứ nhận bonus đó. Không tính arXiv/policy có sẵn thành tool mới của nhóm.
 
 ## B6. Reflection
 
-- Which fixes belonged in `system_prompt.md`?
-- Which fixes belonged in `tools.yaml`?
-- Which failure needed manual review instead of automatic grading?
-- What would you improve next?
+1. **Sửa hành vi hội thoại trong prompt và kiểm tra hồi quy.** Baseline 14/20 lên 19/20 sau khi sửa `system_prompt.md`: bỏ đoán account/URL, clarify và xác nhận trước gửi. Nhưng M06 gọi thừa `social_search` khi user bỏ Twitter, khiến multiturn giảm 1.00 → 0.8333. Metric tổng tăng chưa đủ: mỗi giả thuyết cần theo dõi lỗi cũ lẫn lỗi mới, ưu tiên lượt cuối và chạy lại cùng bộ eval. Nguồn: [v0](../runs/v0_B_base_openrouter_20261110T102235938645.json), [v1](../runs/v1_B_base_openrouter_20261110T105423883723.json).
+
+2. **Đặt quy ước tham số sát schema trong `tools.yaml`.** G03/G13 của [run 10 case](../runs/v2_B_group_openrouter_TranThaiHung_2A202603557_10cases.json) chọn đúng tool nhưng sai `sort_by`/thiếu `policy_area`: routing 1.00, argument 0.80. Prompt định nghĩa workflow/scope; declaration cần giải thích `submittedDate` so với `lastUpdatedDate`, khi dùng `source_citation` và điều kiện dùng/không dùng tool. Đây là hướng sửa tiếp theo, chưa được chứng minh bằng run v3. Contract test bảo đảm schema khớp code, chưa bảo đảm mô tả đủ rõ cho model.
+
+3. **Routing đúng chưa đồng nghĩa hoàn thành tác vụ.** `run_eval.py` chấm lời gọi/args, không chấm toàn bộ `tool_results` hay chất lượng tóm tắt. Bug số byte trên Windows chỉ lộ khi unit test đọc file; với Telegram cần kiểm tra cả request lẫn nhánh không được gửi. Review thủ công vẫn cần cho nguồn trích dẫn, chất lượng báo cáo, xác nhận thực sự của người dùng và phản ứng của model trước injection. Kết hợp unit test, eval và đọc transcript để tránh kết luận vượt bằng chứng.
+
+4. **Bằng chứng phải tái lập và gắn đúng artifact.** UI cho chọn v3 nhưng v2/v3 dùng chung file; transcript nhãn v0 cũng có thể được tạo sau khi prompt đã sửa. Cần đối chiếu `prompt_hash`, `tools_hash`, dataset và số case: 2/2 trên bộ nhỏ không thay thế 8/10 trên bộ đầy đủ. Tiếp theo cần snapshot riêng, chạy base/group v2/v3, ghi từng giả thuyết và metric vào version log, thêm negative eval cho export khi không được yêu cầu; giữ test offline và công khai bằng chứng còn thiếu.
+
 
 ## B7. Small Local Model Challenge (bonus)
 

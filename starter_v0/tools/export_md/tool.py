@@ -42,14 +42,16 @@ def save_markdown_report(filename: str = "", content: str = "", title: str = "")
         lines.append(content_str)
         final_text = "\n".join(lines) + "\n"
 
-        file_path.write_text(final_text, encoding="utf-8")
+        # Write the exact UTF-8 bytes on every OS (no Windows CRLF translation).
+        encoded_text = final_text.encode("utf-8")
+        file_path.write_bytes(encoded_text)
 
         return {
             "tool": "export_md",
             "status": "success",
             "filename": clean_name,
             "file_path": str(file_path),
-            "bytes_written": len(final_text.encode("utf-8")),
+            "bytes_written": len(encoded_text),
         }
     except Exception as exc:
         return err("export_md", exc)
