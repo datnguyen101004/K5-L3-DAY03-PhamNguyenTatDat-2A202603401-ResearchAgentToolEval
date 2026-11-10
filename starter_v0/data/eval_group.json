@@ -184,6 +184,124 @@
         "difficulty": "medium",
         "what_it_tests": "Sau khi nghiên cứu ở các lượt trước, ở lượt cuối yêu cầu lưu file md -> model phải route đúng tool mới export_md với filename='openai_report.md'."
       }
+    },
+    {
+      "id": "G11_name_to_handle_no_clarify",
+      "phase": "B",
+      "suite": "group",
+      "query": "Bài đăng mới nhất của Satya Nadella là gì?",
+      "failure_type": "missing_info",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "timeline",
+            "args": {
+              "screenname": "satyanadella"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "name_to_handle",
+        "difficulty": "medium",
+        "what_it_tests": "Người dùng đã nêu rõ tên người nổi tiếng → gọi timeline với handle satyanadella, KHÔNG hỏi lại bằng clarify (chống hồi quy over-clarify)."
+      }
+    },
+    {
+      "id": "G12_multi_switch_to_web_only",
+      "phase": "B",
+      "suite": "group",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Tìm tweet về Claude"
+        },
+        {
+          "role": "user",
+          "content": "Thôi, bỏ mạng xã hội, tìm tin tức trên web đi"
+        },
+        {
+          "role": "user",
+          "content": "Vẫn chủ đề Claude, trong tuần này"
+        }
+      ],
+      "failure_type": "unnecessary_tool",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "lookup",
+            "args": {
+              "query": "Claude",
+              "topic": "news",
+              "timeframe": "week"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "multiturn_switch_source",
+        "difficulty": "hard",
+        "what_it_tests": "Người dùng đã bỏ nguồn mạng xã hội → chỉ gọi lookup, KHÔNG gọi thừa social_search; carry chủ đề Claude + timeframe=week."
+      }
+    },
+    {
+      "id": "G13_policy_source_citation",
+      "phase": "B",
+      "suite": "group",
+      "query": "Theo chính sách nội bộ của công ty, khi trích dẫn nguồn trong báo cáo thì phải làm thế nào?",
+      "failure_type": "wrong_arg_value",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "policy",
+            "args": {
+              "policy_area": "source_citation"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "route_policy",
+        "difficulty": "medium",
+        "what_it_tests": "Hỏi về quy định NỘI BỘ → dùng policy với policy_area=source_citation, không dùng lookup (web) hay trả lời từ trí nhớ."
+      }
+    },
+    {
+      "id": "G14_multi_social_top_carryover",
+      "phase": "B",
+      "suite": "group",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Tìm tweet về OpenAI"
+        },
+        {
+          "role": "user",
+          "content": "Lấy loại phổ biến nhất nhé"
+        },
+        {
+          "role": "user",
+          "content": "Chỉ cần 3 tweet thôi"
+        }
+      ],
+      "failure_type": "wrong_arg_value",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "social_search",
+            "args": {
+              "query": "OpenAI",
+              "search_type": "Top",
+              "limit": 3
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "multiturn_carry_args",
+        "difficulty": "hard",
+        "what_it_tests": "Carry nhiều tham số qua 3 lượt: query=OpenAI (lượt 1), search_type=Top (lượt 2, 'phổ biến nhất'), limit=3 (lượt 3)."
+      }
     }
   ]
 }
