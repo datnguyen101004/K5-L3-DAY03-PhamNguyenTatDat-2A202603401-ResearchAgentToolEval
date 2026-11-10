@@ -64,8 +64,8 @@ Fill from `artifacts/version_log.csv` and `runs/*.json`.
 |---|---|---|---:|---:|---|
 | v0 | baseline | Đo hành vi chưa tối ưu ban đầu (starter prompt ép gọi tool, đoán mò args, send không confirm) | - | 0.70 | runs/v0_B_base_openrouter_20261110T102235938645.json |
 | v1 | system_prompt.md | Bỏ chỉ dẫn xấu cố ý, thêm routing rule, clarify khi thiếu info, guardrail confirm cho send | 0.70 | 0.95 | runs/v1_B_base_openrouter_20261110T105423883723.json |
-| v2 |  |  |  |  |  |
-| v3 |  |  |  |  |  |
+| v2 | system_prompt.md + tools.yaml | Tối ưu routing tool và xử lý out-of-scope | 0.95 | 0.70 | runs/v2_B_base_openrouter_20261110T172431333437.json |
+| v3 | system_prompt.md + tools.yaml | Đánh giá v3 trên cùng artifact (xác nhận độ ổn định) | 0.70 | 0.75 | runs/v3_B_base_openrouter_20261110T172621085552.json |
 
 ## B2. Failure Analysis
 
