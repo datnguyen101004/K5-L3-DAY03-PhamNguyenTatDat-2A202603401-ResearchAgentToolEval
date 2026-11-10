@@ -56,8 +56,8 @@ Fill from `artifacts/version_log.csv` and `runs/*.json`.
 |---|---|---|---:|---:|---|
 | v0 | baseline |  |  |  |  |
 | v1 |  |  |  |  |  |
-| v2 |  |  |  |  |  |
-| v3 |  |  |  |  |  |
+| v2 | system_prompt.md + tools.yaml | Tối ưu routing tool và xử lý out-of-scope |  | 0.7 | runs/v2_B_base_openrouter_20261110T172431333437.json |
+| v3 | system_prompt.md + tools.yaml | Đánh giá v3 trên cùng artifact (xác nhận độ ổn định) | 0.7 | 0.75 | runs/v3_B_base_openrouter_20261110T172621085552.json |
 
 ## B2. Failure Analysis
 
