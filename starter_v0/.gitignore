@@ -5,5 +5,11 @@ __pycache__/
 .env
 .env.*
 !.env.example
+# Local credentials and test cache (run/transcript evidence stays tracked).
+*.pem
+*.key
+credentials.json
+service-account*.json
+.pytest_cache/
 arxiv_papers/
 venv
