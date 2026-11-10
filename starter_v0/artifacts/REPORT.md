@@ -6,9 +6,9 @@
 
 ## Team
 
-- Team:
-- Members:
-- Provider/model:
+- Team: (chưa điền)
+- Members: Trần Thái Hưng (MSSV 2A202603557)
+- Provider/model: OpenRouter / openai/gpt-4o-mini
 
 ---
 
@@ -54,8 +54,8 @@ Fill from `artifacts/version_log.csv` and `runs/*.json`.
 
 | Version | Changed Artifact | Hypothesis | Metric Before | Metric After | Run File |
 |---|---|---|---:|---:|---|
-| v0 | baseline |  |  |  |  |
-| v1 |  |  |  |  |  |
+| v0 | baseline | Đo hành vi prompt/tools starter | – | 0.70 | runs/v0_B_base_openrouter_20261110T103509169413.json |
+| v1 | system_prompt.md | Đảo ngược 4 chỉ dẫn xấu (đoán, gửi ngay, ép 1 tool, không có phạm vi) | 0.70 | 0.75 | runs/v1_B_base_openrouter_20261110T110611572298.json |
 | v2 |  |  |  |  |  |
 | v3 |  |  |  |  |  |
 
@@ -65,7 +65,15 @@ Use actual failures from `results[*].result.failures`.
 
 | Case ID | Failure Type | Actual Tool Calls | What Failed | Fix |
 |---|---|---|---|---|
-|  |  |  |  |  |
+| R08 (v0) | out_of_scope | send(đáp án tích phân) | Gọi tool cho câu ngoài phạm vi | v1: thêm mục Phạm vi → pass |
+| R14 (v0) | out_of_scope | send(code Fibonacci) | Gọi tool cho câu coding | v1: thêm mục Phạm vi → pass |
+| R10 (v0) | missing_info | timeline(sama) | Đoán handle | v1: hỏi lại bằng clarify → pass |
+| R11 (v0) | missing_info | fetch(example.com/article) | Bịa URL | v1: clarify hỏi URL; còn thiếu response_type=text |
+| R12 (v0) | wrong_boundary | send("Bản tin này") | Gửi không xác nhận | v1: clarify nhưng response_type=text thay vì yes_no |
+| R13 (v0) | wrong_arg_value | lookup(query="AI news", không có topic) | Thiếu topic=news | v1 chưa sửa → hướng v3 (tools.yaml) |
+| R01 (v1) | wrong_tool | clarify | Hồi quy: hỏi handle dù đã nêu "Sam Altman" | v2 |
+| M02 (v1) | wrong_arg_value | lookup + social_search | Hồi quy: gọi thừa social_search | v2 |
+| M03 (v1) | wrong_arg_value | timeline(andrejkarpathy) | Sai handle (cần karpathy) | v3 (tools.yaml) |
 
 ## B3. Team Eval Cases
 
