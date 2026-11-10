@@ -114,8 +114,8 @@ Metric: `case_accuracy` 0.70 → **0.95** (19/20), `tool_routing` 0.75 → 0.95,
 | G01_dat_format_thread | Dữ liệu đã có sẵn + yêu cầu trình bày dạng thread → không gọi tool tìm kiếm | `format(template=thread)` | PASS |
 | G03_newest_papers_sort | "mới được đăng gần đây nhất" → sắp xếp theo ngày nộp | `papers(sort_by=submittedDate, max_results=3)` | **FAIL** (`wrong_arg_value`: model dùng `lastUpdatedDate`) |
 | G05_web_search_month_timeframe | "tin tức" → `topic=news`, "trong tháng này" → `timeframe=month`, query ngắn | `lookup(query=DeepSeek, topic=news, timeframe=month)` | PASS |
-| G11_name_to_handle_no_clarify | Người dùng đã nêu tên người nổi tiếng → map handle, không hỏi lại (chống over-clarify) | `timeline(screenname=satyanadella)` | PASS |
-| G13_policy_source_citation | Hỏi quy định NỘI BỘ → dùng `policy`, không dùng `lookup` | `policy(policy_area=source_citation)` | **FAIL** (`wrong_arg_value`: đúng tool `policy` nhưng bỏ `policy_area`) |
+| G07_name_to_handle_no_clarify | Người dùng đã nêu tên người nổi tiếng → map handle, không hỏi lại (chống over-clarify) | `timeline(screenname=satyanadella)` | PASS |
+| G09_policy_source_citation | Hỏi quy định NỘI BỘ → dùng `policy`, không dùng `lookup` | `policy(policy_area=source_citation)` | **FAIL** (`wrong_arg_value`: đúng tool `policy` nhưng bỏ `policy_area`) |
 
 **Multi-turn (5)**
 
@@ -124,8 +124,8 @@ Metric: `case_accuracy` 0.70 → **0.95** (19/20), `tool_routing` 0.75 → 0.95,
 | G02_dat_format_template_correction | Lượt 3 đổi template sections → bullets; chỉ chấm lượt cuối | `format(template=bullets)` | PASS |
 | G04_papers_then_read_text | Lượt cuối muốn đọc paper đã tìm → `paper_text`, không gọi lại `papers`/`fetch` | `paper_text(max_pages=3)` | PASS |
 | G06_multiturn_research_then_export | Sau nghiên cứu, yêu cầu lưu file md → route tới tool mới **`export_md`** | `export_md(filename=openai_report.md)` | PASS |
-| G12_multi_switch_to_web_only | Người dùng bỏ mạng xã hội → chỉ gọi `lookup`, không gọi thừa `social_search`; carry chủ đề + timeframe | `lookup(query=Claude, topic=news, timeframe=week)` | PASS |
-| G14_multi_social_top_carryover | Carry 3 tham số qua 3 lượt: query (lượt 1), `search_type=Top` (lượt 2), `limit=3` (lượt 3) | `social_search(query=OpenAI, search_type=Top, limit=3)` | PASS |
+| G08_multi_switch_to_web_only | Người dùng bỏ mạng xã hội → chỉ gọi `lookup`, không gọi thừa `social_search`; carry chủ đề + timeframe | `lookup(query=Claude, topic=news, timeframe=week)` | PASS |
+| G10_multi_social_top_carryover | Carry 3 tham số qua 3 lượt: query (lượt 1), `search_type=Top` (lượt 2), `limit=3` (lượt 3) | `social_search(query=OpenAI, search_type=Top, limit=3)` | PASS |
 
 **Nhận xét độ bao phủ**
 

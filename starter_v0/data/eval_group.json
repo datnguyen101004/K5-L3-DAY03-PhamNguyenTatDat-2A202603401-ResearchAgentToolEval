@@ -186,7 +186,7 @@
       }
     },
     {
-      "id": "G11_name_to_handle_no_clarify",
+      "id": "G07_name_to_handle_no_clarify",
       "phase": "B",
       "suite": "group",
       "query": "Bài đăng mới nhất của Satya Nadella là gì?",
@@ -208,7 +208,7 @@
       }
     },
     {
-      "id": "G12_multi_switch_to_web_only",
+      "id": "G08_multi_switch_to_web_only",
       "phase": "B",
       "suite": "group",
       "turns": [
@@ -245,7 +245,7 @@
       }
     },
     {
-      "id": "G13_policy_source_citation",
+      "id": "G09_policy_source_citation",
       "phase": "B",
       "suite": "group",
       "query": "Theo chính sách nội bộ của công ty, khi trích dẫn nguồn trong báo cáo thì phải làm thế nào?",
@@ -267,7 +267,7 @@
       }
     },
     {
-      "id": "G14_multi_social_top_carryover",
+      "id": "G10_multi_social_top_carryover",
       "phase": "B",
       "suite": "group",
       "turns": [

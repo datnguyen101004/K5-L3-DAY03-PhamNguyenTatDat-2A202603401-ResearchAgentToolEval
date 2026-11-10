@@ -1,5 +1,5 @@
 {
-  "run_id": "v2_B_group_openrouter_20261110T174157015176",
+  "run_id": "v2_B_group_openrouter_20261110T174954223929",
   "version": "v2",
   "artifact_version": "v2+pcf92547fd151+tcb5f146d0dd3",
   "prompt_hash": "cf92547fd151756cd38b2293011e6f277275e80d293c4cbf90baf257b457ceeb",
@@ -14,7 +14,7 @@
   "dataset_id": "day04_v2_research_group",
   "dataset_role": "group",
   "description": "Case do NHÓM tự viết thêm để cover thêm trường hợp. Mỗi case cần: id, phase='B', query HOẶC turns, failure_type (thuộc allowed_failure_types), và expect (tool_calls[...] hoặc no_tool=true). Nên kèm metadata.what_it_tests.",
-  "generated_at": "2026-11-10T17:41:57",
+  "generated_at": "2026-11-10T17:49:54",
   "summary": {
     "total_cases": 10,
     "measured_cases": 10,
@@ -25,8 +25,7 @@
     "argument_accuracy": 0.8,
     "multiturn_accuracy": 1.0,
     "failure_counts": {
-      "wrong_arg_value": 1,
-      "wrong_tool": 1
+      "wrong_arg_value": 2
     },
     "observed_mismatch_counts": {
       "wrong_arg_value": 2
@@ -74,7 +73,7 @@
                 },
                 {
                   "title": "Meta mở mã nguồn Llama 4",
-                  "summary": "Meta đã quyết định mở mã nguồn cho mô hình Llama 4, cho phép cộng đồng nghiên cứu và phát triển có thể truy cập và cải tiến mô hình này."
+                  "summary": "Meta đã quyết định mở mã nguồn cho Llama 4, cho phép cộng đồng phát triển và cải tiến mô hình này, nhằm thúc đẩy sự đổi mới trong lĩnh vực AI."
                 }
               ],
               "template": "thread"
@@ -102,7 +101,7 @@
               },
               {
                 "title": "Meta mở mã nguồn Llama 4",
-                "summary": "Meta đã quyết định mở mã nguồn cho mô hình Llama 4, cho phép cộng đồng nghiên cứu và phát triển có thể truy cập và cải tiến mô hình này."
+                "summary": "Meta đã quyết định mở mã nguồn cho Llama 4, cho phép cộng đồng phát triển và cải tiến mô hình này, nhằm thúc đẩy sự đổi mới trong lĩnh vực AI."
               }
             ],
             "template": "thread"
@@ -110,7 +109,7 @@
           "result": {
             "tool": "render_digest",
             "template": "thread",
-            "markdown": "1/ OpenAI đã chính thức công bố phiên bản mới nhất của mô hình ngôn ngữ của mình, GPT-5, với nhiều cải tiến về khả năng hiểu và sinh ngôn ngữ tự nhiên. - \n\n2/ Google đã giới thiệu Gemini 3, một mô hình AI mới với khả năng xử lý ngữ nghĩa và ngữ cảnh tốt hơn, hứa hẹn mang lại trải nghiệm người dùng tốt hơn trong các ứng dụng của Google. - \n\n3/ Meta đã quyết định mở mã nguồn cho mô hình Llama 4, cho phép cộng đồng nghiên cứu và phát triển có thể truy cập và cải tiến mô hình này. - ",
+            "markdown": "1/ OpenAI đã chính thức công bố phiên bản mới nhất của mô hình ngôn ngữ của mình, GPT-5, với nhiều cải tiến về khả năng hiểu và sinh ngôn ngữ tự nhiên. - \n\n2/ Google đã giới thiệu Gemini 3, một mô hình AI mới với khả năng xử lý ngữ nghĩa và ngữ cảnh tốt hơn, hứa hẹn mang lại trải nghiệm người dùng tốt hơn trong các ứng dụng của Google. - \n\n3/ Meta đã quyết định mở mã nguồn cho Llama 4, cho phép cộng đồng phát triển và cải tiến mô hình này, nhằm thúc đẩy sự đổi mới trong lĩnh vực AI. - ",
             "item_count": 3
           }
         }
@@ -261,8 +260,84 @@
           },
           "result": {
             "tool": "arxiv_search",
-            "error": "ConnectionError",
-            "message": "HTTPSConnectionPool(host='export.arxiv.org', port=443): Max retries exceeded with url: /api/query?search_query=all%3Amultimodal+AND+all%3Aagents&max_results=3&sortBy=lastUpdatedDate&sortOrder=descending (Caused by NameResolutionError(\"HTTPSConnection(host='export.arxiv.org', port=443): Failed to resolve 'export.arxiv.org' ([Errno 11001] getaddrinfo failed)\"))"
+            "query": "multimodal agents",
+            "api_query": "all:multimodal AND all:agents",
+            "total_results": 3849,
+            "items": [
+              {
+                "arxiv_id": "2611.12872v1",
+                "title": "HiVe-Mem: Interleaving Horizontal Memory Expansion and Vertical Evidence Composition for Multimodal Agents",
+                "summary": "As multimodal agents accumulate increasingly long interaction histories, effectively retrieving and utilizing past information becomes critical for long-term interaction. Existing memory systems typically rely on semantic retrieval over compressed memories and expose predefined representations, which may miss relevant memories and overlook heterogeneous evidence needs across queries. We introduce \\textbf{\\hivemem}, a multimodal memory framework that interleaves \\textbf{\\textsc{H}}or\\textbf{\\textsc{i}}zontal Memory Expansion with \\textbf{\\textsc{Ve}}rtical Evidence Composition. For horizontal memory expansion, \\hivemem organizes memory episodes into a relational graph using textual and visual anchors, expanding semantically retrieved seeds with related neighbors to recover complementary information. For vertical evidence composition, each retrieved memory retains multiple evidence forms, including compact summaries, captions, grounded visual views, raw images, and interaction history. A lightweight trainable selector independently composes an evidence subset for each retrieved memory, enabling query-adaptive utilization of heterogeneous multimodal information. This two-dimensional design jointly broadens memory coverage and adapts the evidence contributed by individual memories. Experiments across three multimodal memory benchmarks show that \\hivemem consistently improves task performance across base models while reducing token consumption by about 90\\% compared with the most efficient competing multimodal baselines.",
+                "authors": [
+                  "Haozhen Zhang",
+                  "Bohan Liu",
+                  "Jianzhu Bao",
+                  "Qingyuan Liu",
+                  "Haodong Yue",
+                  "Xiao Li",
+                  "Zi Pong Lim",
+                  "Wenya Wang"
+                ],
+                "published": "2026-11-09T18:57:00Z",
+                "updated": "2026-11-09T18:57:00Z",
+                "url": "http://arxiv.org/abs/2611.12872v1",
+                "pdf_url": "https://arxiv.org/pdf/2611.12872v1",
+                "source": "arxiv.org",
+                "primary_category": "cs.CL",
+                "categories": [
+                  "cs.CL",
+                  "cs.AI",
+                  "cs.LG"
+                ]
+              },
+              {
+                "arxiv_id": "2611.08175v2",
+                "title": "PCBRouteAgent: How Close Are LLM Agents to Becoming PCB Routing Engineers?",
+                "summary": "Automating printed circuit board (PCB) routing requires coordinating board-level connectivity decisions with geometric execution under strict design rules. Although recent agents can interact with native routing tools, reliable routing on complex boards remains challenging. We present PCBRouteAgent, a multimodal PCB routing agent inspired by how human engineers coordinate global strategy with local execution. A Global Routing Planner combines board images and structured electrical and geometric information to specify connection topology, routing order, corridors, and layer transitions. A Detailed Routing Executor realizes these guides through KiCad's native routing engine and performs bounded local recovery. Unresolved failures are returned as structured feedback, enabling targeted guide revisions while preserving accepted routes. We evaluate PCBRouteAgent on 247 synthetic and real-world boards from four PCBWorld-Bench test splits. It achieves clean-pass rates of 100%, 94.9%, 100%, and 40% on D2, D3-A, D3-B, and D3-C, respectively. On the three real-world subsets, PCBRouteAgent outperforms the best evaluated baseline in clean-pass rate by 13.9, 36, and 10 percentage points, respectively.",
+                "authors": [
+                  "Yue Zhang",
+                  "Jilei Sun",
+                  "Liqiang Jing",
+                  "Yijie Wei",
+                  "Ruohan Yang"
+                ],
+                "published": "2026-11-05T15:31:15Z",
+                "updated": "2026-11-09T16:23:03Z",
+                "url": "http://arxiv.org/abs/2611.08175v2",
+                "pdf_url": "https://arxiv.org/pdf/2611.08175v2",
+                "source": "arxiv.org",
+                "primary_category": "cs.AI",
+                "categories": [
+                  "cs.AI"
+                ]
+              },
+              {
+                "arxiv_id": "2603.09541v2",
+                "title": "Memory-Efficient Active Perception for Embodied Question Answering in Dynamic Human-Populated Scenes",
+                "summary": "Embodied Question Answering (EQA) couples active visual perception, vision-language reasoning, and sequential decision making, and has traditionally been evaluated in temporally stable environments where visual evidence can be accumulated reliably. In realistic multimedia settings such as dynamic human-populated scenes, however, moving people and transient occlusions introduce human-induced perceptual variations: task-relevant multimodal cues become transient, viewpoint-dependent, and incompletely captured in individual views. Conventional store-then-retrieve strategies generate redundant visual evidence and incur high inference cost, making them ill-suited to such variations. This exposes two core problems for embodied agents: resolving viewpoint-dependent ambiguity, and maintaining compact evidence for efficient inference. To address these challenges, we present DIVRR (Dynamic-Informed View Refinement with Relevance-guided Rotation and adaptive memory selection), a training-free active evidence-acquisition framework for EQA. DIVRR combines question-conditioned room guidance with relevance-triggered view augmentation to guide exploration and additional observation. Selective memory admission uses the same relevance signal as view augmentation to retain high-scoring evidence, reducing stored entries while keeping the retrieved visual context compact. To evaluate EQA under human-induced perceptual variations, we introduce DynHuman-EQA, a dynamic human-populated EQA dataset constructed in Habitat, comprising dynamic and static subsets under shared scene layouts. Experiments on DynHuman-EQA and HM-EQA show that DIVRR outperforms existing baselines in both accuracy and memory efficiency. The gains are most pronounced in dynamic human-populated scenes.",
+                "authors": [
+                  "Xin Lu",
+                  "Rui Li",
+                  "Xun Huang",
+                  "Weixin Li",
+                  "Jiayuan Li",
+                  "Chuanqing Zhuang",
+                  "Zhengda Lu",
+                  "Jun Xiao"
+                ],
+                "published": "2026-03-10T11:51:54Z",
+                "updated": "2026-11-09T15:47:48Z",
+                "url": "http://arxiv.org/abs/2603.09541v2",
+                "pdf_url": "https://arxiv.org/pdf/2603.09541v2",
+                "source": "arxiv.org",
+                "primary_category": "cs.CV",
+                "categories": [
+                  "cs.CV",
+                  "cs.MM"
+                ]
+              }
+            ],
+            "rate_limit_note": "arXiv may return 429 if called too frequently; this tool waits at least 3 seconds between requests in-process."
           }
         }
       ]
@@ -330,8 +405,22 @@
           },
           "result": {
             "tool": "get_arxiv_paper_text",
-            "error": "ConnectionError",
-            "message": "HTTPSConnectionPool(host='arxiv.org', port=443): Max retries exceeded with url: /pdf/1706.03762.pdf (Caused by NameResolutionError(\"HTTPSConnection(host='arxiv.org', port=443): Failed to resolve 'arxiv.org' ([Errno 11001] getaddrinfo failed)\"))"
+            "arxiv_id": "1706.03762",
+            "url": "https://arxiv.org/abs/1706.03762",
+            "pdf_url": "https://arxiv.org/pdf/1706.03762.pdf",
+            "pdf_path": "C:\\Users\\Admin\\Project\\AI_Vin\\K5-L3-DAY03-PhamNguyenTatDat-2A202603401-ResearchAgentToolEval\\starter_v0\\arxiv_papers\\1706.03762.pdf",
+            "txt_path": "C:\\Users\\Admin\\Project\\AI_Vin\\K5-L3-DAY03-PhamNguyenTatDat-2A202603401-ResearchAgentToolEval\\starter_v0\\arxiv_papers\\1706.03762.txt",
+            "page_count": 15,
+            "pages_read": 3,
+            "chars_returned": 8000,
+            "items": [
+              {
+                "title": "arXiv paper 1706.03762",
+                "url": "https://arxiv.org/abs/1706.03762",
+                "source": "arxiv.org",
+                "summary": "Provided proper attribution is provided, Google hereby grants permission to\nreproduce the tables and figures in this paper solely for use in journalistic or\nscholarly works.\nAttention Is All You Need\nAshish Vaswani∗\nGoogle Brain\navaswani@google.com\nNoam Shazeer∗\nGoogle Brain\nnoam@google.com\nNiki Parmar∗\nGoogle Research\nnikip@google.com\nJakob Uszkoreit∗\nGoogle Research\nusz@google.com\nLlion Jones∗\nGoogle Research\nllion@google.com\nAidan N. Gomez∗ †\nUniversity of Toronto\naidan@cs.toronto.edu\nŁukasz Kaiser∗\nGoogle Brain\nlukaszkaiser@google.com\nIllia Polosukhin∗ ‡\nillia.polosukhin@gmail.com\nAbstract\nThe dominant sequence transduction models are based on complex recurrent or\nconvolutional neural networks that include an encoder and a decoder. The best\nperforming models also connect the encoder and decoder through an attention\nmechanism. We propose a new simple network architecture, the Transformer,\nbased solely on attention mechanisms, dispensing with recurrence and convolutions\nentirely. Experiments on two machine translation tasks show these models to\nbe superior in quality while being more parallelizable and requiring significantly\nless time to train. Our model achieves 28.4 BLEU on the WMT 2014 English-\nto-German translation task, improving over the existing best results, including\nensembles, by over 2 BLEU. On the WMT 2014 English-to-French translation task,\nour model establishes a new single-model state-of-the-art BLEU score of 41.8 after\ntraining for 3.5 days on eight GPUs, a small fraction of the training costs of the\nbest models from the literature. We show that the Transformer generalizes well to\nother tasks by applying it successfully to English constituency parsing both with\nlarge and limited training data.\n∗Equal contribution. Listing order is random. Jakob proposed replacing RNNs with self-attention and started\nthe effort to evaluate this idea. Ashish, with Illia, designed and implemented the first Transformer models and\nhas been crucially involved in every aspect of this work. Noam proposed scaled dot-product attention, multi-head\nattention and the parameter-free position representation and became the other person involved in nearly every\ndetail. Niki designed, implemented, tuned and evaluated countless model variants in our original codebase and\ntensor2tensor. Llion also experimented with novel model variants, was responsible for our initial codebase, and\nefficient inference and visualizations. Lukasz and Aidan spent countless long days designing various parts of and\nimplementing tensor2tensor, replacing our earlier codebase, greatly improving results and massively accelerating\nour research.\n†Work performed while at Google Brain.\n‡Work performed while at Google Research.\n31st Conference on Neural Information Processing Systems (NIPS 2017), Long Beach, CA, USA.\narXiv:1706.03762v7  [cs.CL]  2 Aug 2023\n\n1 Introduction\nRecurrent neural networks, long short-term memory [13] and gated recurrent [7] neural networks\nin particular, have been firmly established as state of the art approaches in sequence modeling and\ntransduction problems such as language modeling and machine translation [ 35, 2, 5]. Numerous\nefforts have since continued to push the boundaries of recurrent language models and encoder-decoder\narchitectures [38, 24, 15].\nRecurrent models typically factor computation along the symbol positions of the input and output\nsequences. Aligning the positions to steps in computation time, they generate a sequence of hidden\nstates ht, as a function of the previous hidden state ht−1 and the input for position t. This inherently\nsequential nature precludes parallelization within training examples, which becomes critical at longer\nsequence lengths, as memory constraints limit batching across examples. Recent work has achieved\nsignificant improvements in computational efficiency through factorization tricks [21] and conditional\ncomputation [32], while also improving model performance in case of the latter. The fundamental\nconstraint of sequential computation, however, remains.\nAttention mechanisms have become an integral part of compelling sequence modeling and transduc-\ntion models in various tasks, allowing modeling of dependencies without regard to their distance in\nthe input or output sequences [2, 19]. In all but a few cases [27], however, such attention mechanisms\nare used in conjunction with a recurrent network.\nIn this work we propose the Transformer, a model architecture eschewing recurrence and instead\nrelying entirely on an attention mechanism to draw global dependencies between input and output.\nThe Transformer allows for significantly more parallelization and can reach a new state of the art in\ntranslation quality after being trained for as little as twelve hours on eight P100 GPUs.\n2 Background\nThe goal of reducing sequential computation also forms the foundation of the Extended Neural GPU\n[16], ByteNet [18] and ConvS2S [9], all of which use convolutional neural networks as basic building\nblock, computing hidden representations in parallel for all input and output positions. In these models,\nthe number of operations required to relate signals from two arbitrary input or output positions grows\nin the distance between positions, linearly for ConvS2S and logarithmically for ByteNet. This makes\nit more difficult to learn dependencies between distant positions [ 12]. In the Transformer this is\nreduced to a constant number of operations, albeit at the cost of reduced effective resolution due\nto averaging attention-weighted positions, an effect we counteract with Multi-Head Attention as\ndescribed in section 3.2.\nSelf-attention, sometimes called intra-attention is an attention mechanism relating different positions\nof a single sequence in order to compute a representation of the sequence. Self-attention has been\nused successfully in a variety of tasks including reading comprehension, abstractive summarization,\ntextual entailment and learning task-independent sentence representations [4, 27, 28, 22].\nEnd-to-end memory networks are based on a recurrent attention mechanism instead of sequence-\naligned recurrence and have been shown to perform well on simple-language question answering and\nlanguage modeling tasks [34].\nTo the best of our knowledge, however, the Transformer is the first transduction model relying\nentirely on self-attention to compute representations of its input and output without using sequence-\naligned RNNs or convolution. In the following sections, we will describe the Transformer, motivate\nself-attention and discuss its advantages over models such as [17, 18] and [9].\n3 Model Architecture\nMost competitive neural sequence transduction models have an encoder-decoder structure [5, 2, 35].\nHere, the encoder maps an input sequence of symbol representations (x1, ..., xn) to a sequence\nof continuous representations z = (z1, ..., zn). Given z, the decoder then generates an output\nsequence (y1, ..., ym) of symbols one element at a time. At each step the model is auto-regressive\n[10], consuming the previously generated symbols as additional input when generating the next.\n2\n\nFigure 1: The Transformer - model architecture.\nThe Transformer follows this overall architecture using stacked self-attention and point-wise, fully\nconnected layers for both the encoder and decoder, shown in the left and right halves of Figure 1,\nrespectively.\n3.1 Encoder and Decoder Stacks\nEncoder: The encoder is composed of a stack of N = 6 identical layers. Each layer has two\nsub-layers. The first is a multi-head self-attention mechanism, and the second is a simple, position-\nwise fully connected feed-forward network. We employ a residual connection [11] around each of\nthe two sub-layers, followed by layer normalization [ 1]. That is, the output of each sub-layer is\nLayerNorm(x + Sublayer(x)), where Sublayer(x) is the function implemented by the sub-layer\nitself. To facilitate these residual connections, all sub-layers in the model, as well as the embedding\nlayers"
+              }
+            ]
           }
         }
       ]
@@ -390,8 +479,46 @@
           },
           "result": {
             "tool": "web_search",
-            "error": "ConnectionError",
-            "message": "HTTPSConnectionPool(host='api.tavily.com', port=443): Max retries exceeded with url: /search (Caused by NameResolutionError(\"HTTPSConnection(host='api.tavily.com', port=443): Failed to resolve 'api.tavily.com' ([Errno 11001] getaddrinfo failed)\"))"
+            "query": "DeepSeek",
+            "topic": "news",
+            "timeframe": "month",
+            "items": [
+              {
+                "title": "DeepSeek",
+                "url": "https://tavily.com/knowledge/company/LAfirX2dI9uN",
+                "source": "tavily.com",
+                "summary": "# DeepSeek AI\nID: LAfirX2dI9uN\nWebsite: www.deepseek.com\nLegal name: Hangzhou DeepSeek Artificial Intelligence Co., Ltd.\nHeadquarters: Hangzhou, China\nLinkedIn: www.linkedin.com/company/deepseek-ai · 196,847 followers\nIndustry: Technology, Information and Internet\nCompany type: Privately Held\nFounded: 2023\nSocial profiles: www.twitter.com/deepseek_ai, www.crunchbase.com/organization/deepseek, www.instagram.com/deepseekai_official, www.youtube.com/@deepseek-ai, github.com/deepseek-ai [...] Email: service@deepseek.com\nPhone: 20250178\nDescription: DeepSeek is a company that focuses on researching world-leading deep-end models and technologies. They provide deep-end AI solutions and deep-seek AI interactions to connect with deep-seek AI.",
+                "score": 0.9106172
+              },
+              {
+                "title": "DHS to ban DeepSeek from federal civilian agencies | CyberScoop",
+                "url": "https://cyberscoop.com/dhs-bans-deepseek-federal-agencies",
+                "source": "cyberscoop.com",
+                "summary": "DeepSeek is the only Chinese AI model named in the order, but it’s just one of several Chinese open weight AI models that have worried national security officials or have been accused of illegally distilling U.S. models, along with Moonshot AI, the makers of Kimi and Alibaba, makers of Qwen.\n\nShare\n\n Facebook\n LinkedIn\n Twitter\n\nAdvertisement\n\nAdvertisement\n\n## More Like This\n\n1. ### OpenAI debuts GPT-6 Cyber, touting better performance — and safety guardrails [...] He said DeepSeek models store data in servers based in China, where national security laws give the Chinese government wide latitude to request and obtain data from domestic companies. Models hosted directly by DeepSeek collect personally identifiable information from users and trace their “digital fingerprints” online. And like every other major AI model on the market, DeepSeek relies on a “prompt and response” process, something Mullin said “may result in the transfer of sensitive data” to [...] The DeepSeek logo is seen on a display at a shopping mall in Hangzhou, in China's eastern Zhejiang province on April 23, 2026. Chinese startup DeepSeek released a new artificial intelligence model with \"drastically reduced\" costs on April 24, more than a year after it stunned the world with a low-cost reasoning model that matched the capabilities of US rivals. (Photo by CN-STR / AFP via Getty Images) / China OUT",
+                "score": 0.81770587
+              },
+              {
+                "title": "DeepSeek",
+                "url": "https://tavily.com/knowledge/company/Wx7nH1Ciri18",
+                "source": "tavily.com",
+                "summary": "# DeepSeek\nID: Wx7nH1Ciri18\nWebsite: www.deepseek.com\nLegal name: Markets Able\nHeadquarters: New York, New York, United States\nLinkedIn: www.linkedin.com/company/deep-seek-ai-model · 20,653 followers\nIndustry: Technology, Information and Internet\nIndustry codes: SIC 62, 623, NAICS 52, 523\nCompany type: Privately Held\nFounded: 2016\nSocial profiles: www.crunchbase.com/organization/markets-able\nEmail: contact@marketsable.com [...] Description: MarketsAble is a research company that specializes in delivering cutting-edge reports and in-depth analysis on various industries, including blockchain, cryptocurrency, DeFi, Web3, and Bitcoin. They also cover emerging technologies like AI, IoT, Quantum Computing, and beyond. Their mission is to provide businesses, investors, and innovators with insights to stay ahead in fast-evolving markets.",
+                "score": 0.8131201
+              },
+              {
+                "title": "DeepSeek Pushes Out Updated AI Model It Says Is Faster, Leaner",
+                "url": "https://finance.yahoo.com/technology/ai/articles/deepseek-pushes-updated-ai-model-134714989.html",
+                "source": "finance.yahoo.com",
+                "summary": "The rapid pace of DeepSeek's new launches underscores the intensifying contest between China's open-weight models and the proprietary models of their US counterparts, which are top performers, but with far higher costs.\n\nDeepSeek's latest iteration delivers \"substantial improvements across reasoning, coding, agentic tasks, and visual benchmarks,\" the Hangzhou-based startup said in its technical report on Hugging Face, the online platform for AI models, data sets and apps. [...] 1. Crypto\n\n   Crypto\n2. AI\n\n   AI\n\nBloomberg\n\n# DeepSeek Pushes Out Updated AI Model It Says Is Faster, Leaner\n\nThe Deepseek website. · Bloomberg · Bloomberg\n\nSaritha Rai\n\n2 min read\n\n(Bloomberg) -- DeepSeek released an update of its AI model this weekend that it says is faster and leaner, ramping up the Chinese company's challenge to Silicon Valley rivals Anthropic PBC and OpenAI as well as domestic competitors like Moonshot Kimi and Z.ai\n\nMost Read from Bloomberg",
+                "score": 0.7623715
+              },
+              {
+                "title": "DeepSeek Drops Enhanced Coding Agent With Aim to Rival Anthropic - Bloomberg",
+                "url": "https://www.bloomberg.com/news/articles/2026-11-01/deepseek-drops-enhanced-coding-agent-with-aim-to-rival-anthropic",
+                "source": "bloomberg.com",
+                "summary": "Asia\n\n# DeepSeek Drops Enhanced Coding Agent With Aim to Rival Anthropic\n\nDeepSeek has released a prototype of a more autonomous coding agent as it seeks to challenge Anthropic PBC’s popular Claude Code.\n\nThe new open-source offering, dubbed “Super-Agent,” can proactively monitor group chats among developers for feedback on coding issues and suggest solutions without being summoned, the DeepSeek Harness team said in a post on WeChat on Saturday.",
+                "score": 0.7253574
+              }
+            ]
           }
         }
       ]
@@ -440,7 +567,7 @@
             "name": "export_md",
             "args": {
               "filename": "openai_report.md",
-              "content": "### Tin tức mới nhất về OpenAI trong tuần này\n\n1. **OpenAI ra mắt GPT-4.5**: OpenAI đã công bố phiên bản mới của mô hình ngôn ngữ, GPT-4.5, với nhiều cải tiến về khả năng hiểu và tạo ngôn ngữ tự nhiên.\n\n2. **Hợp tác với Microsoft**: OpenAI đã mở rộng quan hệ đối tác với Microsoft, tích hợp công nghệ AI vào các sản phẩm của họ, bao gồm Office và Azure.\n\n3. **Chính sách bảo mật dữ liệu**: OpenAI đã công bố các biện pháp mới để bảo vệ dữ liệu người dùng, nhấn mạnh cam kết của họ đối với quyền riêng tư và bảo mật.\n\n4. **Nghiên cứu AI có trách nhiệm**: OpenAI đã tổ chức một hội thảo về nghiên cứu AI có trách nhiệm, thu hút nhiều chuyên gia trong lĩnh vực này để thảo luận về các thách thức và cơ hội.\n\n5. **Cập nhật API**: OpenAI đã phát hành các bản cập nhật cho API của họ, cải thiện hiệu suất và khả năng mở rộng cho các nhà phát triển.\n\n### Kết luận\nOpenAI tiếp tục dẫn đầu trong lĩnh vực AI với những đổi mới và cam kết mạnh mẽ về bảo mật và trách nhiệm xã hội.",
+              "content": "### Tin tức mới nhất về OpenAI trong tuần này\n\n1. **OpenAI ra mắt GPT-4.5**: OpenAI đã công bố phiên bản mới nhất của mô hình ngôn ngữ của mình, GPT-4.5, với nhiều cải tiến về khả năng hiểu và tạo ngôn ngữ tự nhiên.\n\n2. **Hợp tác với Microsoft**: OpenAI đã mở rộng quan hệ đối tác với Microsoft, tích hợp công nghệ AI vào các sản phẩm của Microsoft như Word và Excel.\n\n3. **Chương trình nghiên cứu AI an toàn**: OpenAI đã khởi động một chương trình nghiên cứu mới nhằm đảm bảo rằng AI được phát triển và triển khai một cách an toàn và có trách nhiệm.\n\n4. **Cập nhật về DALL-E**: OpenAI đã cập nhật DALL-E, cho phép người dùng tạo ra hình ảnh từ văn bản với độ chính xác cao hơn.\n\n5. **Thảo luận về đạo đức AI**: OpenAI đã tổ chức một hội thảo về đạo đức trong AI, thu hút sự tham gia của nhiều chuyên gia trong lĩnh vực này.",
               "title": "Báo cáo về OpenAI"
             }
           }
@@ -456,7 +583,7 @@
           "tool": "export_md",
           "args": {
             "filename": "openai_report.md",
-            "content": "### Tin tức mới nhất về OpenAI trong tuần này\n\n1. **OpenAI ra mắt GPT-4.5**: OpenAI đã công bố phiên bản mới của mô hình ngôn ngữ, GPT-4.5, với nhiều cải tiến về khả năng hiểu và tạo ngôn ngữ tự nhiên.\n\n2. **Hợp tác với Microsoft**: OpenAI đã mở rộng quan hệ đối tác với Microsoft, tích hợp công nghệ AI vào các sản phẩm của họ, bao gồm Office và Azure.\n\n3. **Chính sách bảo mật dữ liệu**: OpenAI đã công bố các biện pháp mới để bảo vệ dữ liệu người dùng, nhấn mạnh cam kết của họ đối với quyền riêng tư và bảo mật.\n\n4. **Nghiên cứu AI có trách nhiệm**: OpenAI đã tổ chức một hội thảo về nghiên cứu AI có trách nhiệm, thu hút nhiều chuyên gia trong lĩnh vực này để thảo luận về các thách thức và cơ hội.\n\n5. **Cập nhật API**: OpenAI đã phát hành các bản cập nhật cho API của họ, cải thiện hiệu suất và khả năng mở rộng cho các nhà phát triển.\n\n### Kết luận\nOpenAI tiếp tục dẫn đầu trong lĩnh vực AI với những đổi mới và cam kết mạnh mẽ về bảo mật và trách nhiệm xã hội.",
+            "content": "### Tin tức mới nhất về OpenAI trong tuần này\n\n1. **OpenAI ra mắt GPT-4.5**: OpenAI đã công bố phiên bản mới nhất của mô hình ngôn ngữ của mình, GPT-4.5, với nhiều cải tiến về khả năng hiểu và tạo ngôn ngữ tự nhiên.\n\n2. **Hợp tác với Microsoft**: OpenAI đã mở rộng quan hệ đối tác với Microsoft, tích hợp công nghệ AI vào các sản phẩm của Microsoft như Word và Excel.\n\n3. **Chương trình nghiên cứu AI an toàn**: OpenAI đã khởi động một chương trình nghiên cứu mới nhằm đảm bảo rằng AI được phát triển và triển khai một cách an toàn và có trách nhiệm.\n\n4. **Cập nhật về DALL-E**: OpenAI đã cập nhật DALL-E, cho phép người dùng tạo ra hình ảnh từ văn bản với độ chính xác cao hơn.\n\n5. **Thảo luận về đạo đức AI**: OpenAI đã tổ chức một hội thảo về đạo đức trong AI, thu hút sự tham gia của nhiều chuyên gia trong lĩnh vực này.",
             "title": "Báo cáo về OpenAI"
           },
           "result": {
@@ -464,13 +591,13 @@
             "status": "success",
             "filename": "openai_report.md",
             "file_path": "C:\\Users\\Admin\\Project\\AI_Vin\\K5-L3-DAY03-PhamNguyenTatDat-2A202603401-ResearchAgentToolEval\\starter_v0\\reports\\openai_report.md",
-            "bytes_written": 1285
+            "bytes_written": 1075
           }
         }
       ]
     },
     {
-      "id": "G11_name_to_handle_no_clarify",
+      "id": "G07_name_to_handle_no_clarify",
       "phase": "B",
       "suite": "group",
       "case_suite": "group",
@@ -540,7 +667,7 @@
                 "metrics": {
                   "favorites": 9302,
                   "retweets": 585,
-                  "views": "1806270"
+                  "views": "1806286"
                 }
               },
               {
@@ -552,7 +679,7 @@
                 "metrics": {
                   "favorites": 204,
                   "retweets": 12,
-                  "views": "89992"
+                  "views": "89993"
                 }
               },
               {
@@ -564,7 +691,7 @@
                 "metrics": {
                   "favorites": 153,
                   "retweets": 8,
-                  "views": "84031"
+                  "views": "84032"
                 }
               },
               {
@@ -585,7 +712,7 @@
       ]
     },
     {
-      "id": "G12_multi_switch_to_web_only",
+      "id": "G08_multi_switch_to_web_only",
       "phase": "B",
       "suite": "group",
       "case_suite": "group",
@@ -696,7 +823,7 @@
       ]
     },
     {
-      "id": "G13_policy_source_citation",
+      "id": "G09_policy_source_citation",
       "phase": "B",
       "suite": "group",
       "case_suite": "group",
@@ -730,9 +857,9 @@
           }
         ],
         "actual_text": null,
-        "case_failure_type": "wrong_tool",
+        "case_failure_type": "wrong_arg_value",
         "observed_mismatch": "wrong_arg_value",
-        "failure_type": "wrong_tool",
+        "failure_type": "wrong_arg_value",
         "failures": [
           "policy_area: expected 'source_citation', got None"
         ]
@@ -755,7 +882,7 @@
       ]
     },
     {
-      "id": "G14_multi_social_top_carryover",
+      "id": "G10_multi_social_top_carryover",
       "phase": "B",
       "suite": "group",
       "case_suite": "group",
@@ -825,27 +952,15 @@
             "search_type": "Top",
             "items": [
               {
-                "title": "Privacy should advance as fast as intelligence. OpenAI Private Intelligence gives businesses stronger controls over thei",
-                "summary": "Privacy should advance as fast as intelligence. OpenAI Private Intelligence gives businesses stronger controls over their data while using our most capable models.\n\nWe’re building these protections in close collaboration with some of our largest customers to help businesses apply frontier AI to their most sensitive work.\nhttps://t.co/BiA4N8FQVH",
-                "url": "https://x.com/OpenAI/status/2116186509384815084",
-                "source": "@OpenAI",
-                "date": "Fri Oct 30 15:12:35 +0000 2026",
+                "title": "🚨NEW: Sam Altman is confronted by Tucker Carlson about the death of the OpenAI whistleblower, Suchir Balaji (WILD) 😲",
+                "summary": "🚨NEW: Sam Altman is confronted by Tucker Carlson about the death of the OpenAI whistleblower, Suchir Balaji (WILD) 😲\n\nSam Altman suggests that Tucker Carlson is accusing him of murder.\n\n\"I haven't done too many interviews where I have been accused of murder.\" https://t.co/uuup9xP63x",
+                "url": "https://x.com/AutismCapital/status/1965845243053617436",
+                "source": "@AutismCapital",
+                "date": "Wed Sep 10 18:30:04 +0000 2025",
                 "metrics": {
-                  "favorites": 3045,
-                  "retweets": 229,
-                  "views": "475603"
-                }
-              },
-              {
-                "title": "ChatGPT and Codex are helping engineers build for the physical world.",
-                "summary": "ChatGPT and Codex are helping engineers build for the physical world.\n\nWe’re sharing our progress across mechanical design, electrical engineering, and simulation—from helping our hardware teams iterate faster to testing new workflows with industry collaborators. https://t.co/b3rW9zYJGA",
-                "url": "https://x.com/OpenAI/status/2117692475775258785",
-                "source": "@OpenAI",
-                "date": "Tue Nov 03 18:56:45 +0000 2026",
-                "metrics": {
-                  "favorites": 8436,
-                  "retweets": 754,
-                  "views": "1399366"
+                  "favorites": 69123,
+                  "retweets": 10589,
+                  "views": "38110290"
                 }
               },
               {
@@ -857,7 +972,19 @@
                 "metrics": {
                   "favorites": 21424,
                   "retweets": 2002,
-                  "views": "4127969"
+                  "views": "4128210"
+                }
+              },
+              {
+                "title": "NEW: The mother of 12-year-old Maya Gebala, who was shot by a transgender person in Canada, gives update on her daughter",
+                "summary": "NEW: The mother of 12-year-old Maya Gebala, who was shot by a transgender person in Canada, gives update on her daughter’s condition.\n\n“Her eye is open and she's responding and moving around and she is moving her hands.”\n\nA new report reveals that a ChatGPT account linked to trans shooter Jesse Van Rootselaar had described scenarios involving gun violence.\n\nThe posts were so bad that employees were flagged at OpenAI.\n\n“Internally, about a dozen staffers debated whether to take action on Van Rootselaar's posts… OpenAl leaders ultimately decided not to contact authorities,” the WSJ reports.",
+                "url": "https://x.com/CollinRugg/status/2025323083469652224",
+                "source": "@CollinRugg",
+                "date": "Sat Feb 21 21:33:46 +0000 2026",
+                "metrics": {
+                  "favorites": 52427,
+                  "retweets": 6247,
+                  "views": "6180159"
                 }
               }
             ]
