@@ -56,7 +56,7 @@ Fill from `artifacts/version_log.csv` and `runs/*.json`.
 |---|---|---|---:|---:|---|
 | v0 | baseline | Đo hành vi chưa tối ưu ban đầu (starter prompt ép gọi tool, đoán mò args, send không confirm) | - | 0.70 | runs/v0_B_base_openrouter_20261110T102235938645.json |
 | v1 | system_prompt.md | Bỏ chỉ dẫn xấu cố ý, thêm routing rule, clarify khi thiếu info, guardrail confirm cho send | 0.70 | 0.95 | runs/v1_B_base_openrouter_20261110T105423883723.json |
-| v2 | system_prompt.md | Rule gọi song song ở v1 khiến giữ tool nguồn đã bị bỏ (M06) → chỉ gọi tool của nguồn user muốn ở lượt mới nhất | 0.95 | 1.00 | runs/v2_B_base_openrouter_20261110T112408446885.json |
+| v2 | system_prompt.md | Rule gọi song song ở v1 khiến giữ tool nguồn đã bị bỏ (M06) → chỉ gọi tool của nguồn user muốn ở lượt mới nhất | 0.95 | 1.00 | runs/v2_B_base_openrouter_TranThaiHung_2A202603557.json |
 | v3 |  |  |  |  |  |
 
 ## B2. Failure Analysis
