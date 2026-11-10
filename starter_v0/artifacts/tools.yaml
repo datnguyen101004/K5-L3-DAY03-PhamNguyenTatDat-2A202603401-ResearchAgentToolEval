@@ -26,11 +26,11 @@ tools:
       required: [question]
 
   - name: timeline
-    description: "Lấy các bài đăng gần đây."
+    description: "Lấy các bài đăng gần đây của một tài khoản Twitter/X cụ thể. CHỈ DÙNG KHI người dùng có nêu tên người hoặc tài khoản rõ ràng. Nếu người dùng không nói rõ tài khoản của ai, BẮT BUỘC gọi clarify để hỏi lại, KHÔNG ĐƯỢC tự ý chọn tài khoản mặc định."
     parameters:
       type: object
       properties:
-        screenname: {type: string, default: "", description: "Tên tài khoản"}
+        screenname: {type: string, default: "", description: "Tên tài khoản (không có ký tự @)"}
         limit: {type: integer, default: 5, description: "Số lượng"}
       required: [screenname]
 
@@ -45,11 +45,11 @@ tools:
       required: [query]
 
   - name: lookup
-    description: "Tra cứu thông tin trên internet."
+    description: "Tra cứu thông tin và tin tức trên internet. Phải có chủ đề tìm kiếm cụ thể trong query. Nếu người dùng chỉ hỏi chung chung 'tin tức mới nhất hôm nay' mà không nêu chủ đề, BẮT BUỘC gọi clarify để hỏi rõ chủ đề, TUYỆT ĐỐI KHÔNG gọi lookup với query rỗng."
     parameters:
       type: object
       properties:
-        query: {type: string, default: "", description: "Truy vấn"}
+        query: {type: string, default: "", description: "Truy vấn tìm kiếm (bắt buộc phải có từ khóa chủ đề, không được để rỗng)"}
         topic: {type: string, enum: [general, news], default: "general", description: "Phân loại"}
         timeframe: {type: string, enum: [day, week, month, year], default: "week", description: "Khoảng thời gian"}
         max_results: {type: integer, default: 5, description: "Số kết quả"}
@@ -123,3 +123,14 @@ tools:
         max_pages: {type: integer, default: 5, description: "Số trang"}
         max_chars: {type: integer, default: 8000, description: "Số ký tự"}
       required: [arxiv_url]
+
+  # ---------------- Team custom tools ----------------
+  - name: export_md
+    description: "Lưu câu trả lời hoặc báo cáo ra file Markdown (.md) cục bộ. CHỈ DÙNG KHI người dùng có yêu cầu rõ ràng về việc xuất hoặc lưu file (.md). TUYỆT ĐỐI KHÔNG tự ý gọi tool này nếu người dùng chỉ hỏi tóm tắt hoặc tìm kiếm thông thường."
+    parameters:
+      type: object
+      properties:
+        filename: {type: string, default: "", description: "Tên file (ví dụ: research.md, ai_trends.md)"}
+        content: {type: string, default: "", description: "Nội dung cần lưu vào file markdown"}
+        title: {type: string, default: "", description: "Tiêu đề của báo cáo (tùy chọn)"}
+      required: [content]

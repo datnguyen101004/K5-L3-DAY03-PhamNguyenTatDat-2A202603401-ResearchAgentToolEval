@@ -1,0 +1,211 @@
+{
+  "transcript_id": "v1_openrouter_20261110T123830856900",
+  "version": "v1",
+  "artifact_version": "v1+pc782226173a4+tcbef0f588ae8",
+  "prompt_hash": "c782226173a420cd712720c7537527174940241fcd1c4578c75a467efbf56d84",
+  "tools_hash": "cbef0f588ae8df8f4281671d4afd2c43b7d961b71bee092c48eb6d0ac97285d7",
+  "provider": "openrouter",
+  "model": null,
+  "system_prompt": "D:\\AI\\vin-thucchien\\Lab\\lab3\\K5-L3-DAY03-PhamNguyenTatDat-2A202603401-ResearchAgentToolEval\\starter_v0\\artifacts\\system_prompt_v1.md",
+  "tools": "D:\\AI\\vin-thucchien\\Lab\\lab3\\K5-L3-DAY03-PhamNguyenTatDat-2A202603401-ResearchAgentToolEval\\starter_v0\\artifacts\\tools_v0.yaml",
+  "history_window": 5,
+  "max_tool_rounds": 4,
+  "created_at": "2026-11-10T12:38:30",
+  "updated_at": "2026-11-10T12:39:06",
+  "turns": [
+    {
+      "turn_index": 1,
+      "started_at": "2026-11-10T12:38:41",
+      "user": "tin tức hôm nay ",
+      "status": "waiting_for_user",
+      "assistant_text": "Bạn muốn tìm tin tức về chủ đề cụ thể nào như công nghệ, AI, kinh tế hay đời sống?",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": null,
+          "tool_calls": [
+            {
+              "name": "clarify",
+              "args": {
+                "question": "Bạn muốn tìm tin tức về chủ đề cụ thể nào như công nghệ, AI, kinh tế hay đời sống?",
+                "response_type": "text"
+              }
+            }
+          ],
+          "tool_results": [
+            {
+              "tool": "clarify",
+              "args": {
+                "question": "Bạn muốn tìm tin tức về chủ đề cụ thể nào như công nghệ, AI, kinh tế hay đời sống?",
+                "response_type": "text"
+              },
+              "result": {
+                "tool": "ask_user",
+                "question": "Bạn muốn tìm tin tức về chủ đề cụ thể nào như công nghệ, AI, kinh tế hay đời sống?",
+                "response_type": "text",
+                "options": [],
+                "awaiting_user": true
+              }
+            }
+          ]
+        }
+      ],
+      "tool_events": [
+        {
+          "tool": "clarify",
+          "args": {
+            "question": "Bạn muốn tìm tin tức về chủ đề cụ thể nào như công nghệ, AI, kinh tế hay đời sống?",
+            "response_type": "text"
+          },
+          "result": {
+            "tool": "ask_user",
+            "question": "Bạn muốn tìm tin tức về chủ đề cụ thể nào như công nghệ, AI, kinh tế hay đời sống?",
+            "response_type": "text",
+            "options": [],
+            "awaiting_user": true
+          }
+        }
+      ],
+      "ended_at": "2026-11-10T12:38:42"
+    },
+    {
+      "turn_index": 2,
+      "started_at": "2026-11-10T12:38:52",
+      "user": "công nghệ ",
+      "status": "answered",
+      "assistant_text": "Here are the latest news updates in technology for today, November 10, 2026:\n\n1. **Khoa học công nghệ Việt Nam bứt tốc**  \n   [Read more](https://daidoanket.vn/khoa-hoc-cong-nghe-viet-nam-but-toc.html)  \n   Source: daidoanket.vn  \n   Summary: The Prime Minister has identified 20 major tasks, with 18 strategic technology missions approved as of November 3, 2026. The technology sector is showing significant growth, with projected revenues reaching $254.6 billion in 2026.\n\n2. **Nâng cao năng lực công nghệ và đổi mới sáng tạo cho doanh nghiệp chế biến, chế tạo khu vực phía Nam**  \n   [Read more](https://baovinhlong.com.vn/khoa-hoc-cong-nghe/202611/nang-cao-nang-luc-cong-nghe-va-doi-moi-sang-tao-cho-doanh-nghiep-che-bien-che-tao-khu-vuc-phia-nam-d5a7c34)  \n   Source: baovinhlong.com.vn  \n   Summary: The article discusses the importance of connecting technology supply and demand for businesses in the southern region, focusing on specific technological solutions for local industries.\n\n3. **Ngoại giao khoa học công nghệ mở rộng kết nối chuyên gia quốc tế**  \n   [Read more](https://doanhnhan.congly.vn/ngoai-giao-khoa-hoc-cong-nghe-mo-rong-ket-noi-chuyen-gia-quoc-te.html)  \n   Source: doanhnhan.congly.vn  \n   Summary: The Ministry of Science and Technology is enhancing international expert connections to support national development tasks, emphasizing the role of science diplomacy.\n\n4. **Ứng dụng công nghệ số, nâng tầm hiệu quả hoạt động của cơ quan dân cử**  \n   [Read more](https://baothanhhoa.vn/ung-dung-cong-nghe-so-nang-tam-hieu-qua-hoat-dong-cua-co-quan-dan-cu-308536.htm)  \n   Source: baothanhhoa.vn  \n   Summary: The article highlights the importance of digital transformation in improving the effectiveness of local government operations, focusing on the integration of AI and digital technologies.\n\n5. **RISC - V và chip A.I, cơ hội làm chủ công nghệ**  \n   [Read more](https://hanoionline.vn/risc-v-va-chip-ai-co-hoi-lam-chu-cong-nghe-cong-nghe-va-doi-song-10-11-2026-246261109120139799.htm)  \n   Source: hanoionline.vn  \n   Summary: This piece discusses the potential of RISC-V architecture and AI chips in driving innovation and addressing practical challenges in various industries.\n\nFeel free to check the links for more detailed information!",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": null,
+          "tool_calls": [
+            {
+              "name": "lookup",
+              "args": {
+                "query": "công nghệ",
+                "topic": "news",
+                "timeframe": "day",
+                "max_results": 5
+              }
+            }
+          ],
+          "tool_results": [
+            {
+              "tool": "lookup",
+              "args": {
+                "query": "công nghệ",
+                "topic": "news",
+                "timeframe": "day",
+                "max_results": 5
+              },
+              "result": {
+                "tool": "web_search",
+                "query": "công nghệ",
+                "topic": "news",
+                "timeframe": "day",
+                "items": [
+                  {
+                    "title": "Khoa học công nghệ Việt Nam bứt tốc",
+                    "url": "https://daidoanket.vn/khoa-hoc-cong-nghe-viet-nam-but-toc.html",
+                    "source": "daidoanket.vn",
+                    "summary": "Cùng với đó, Thủ tướng Chính phủ đã xác định 20 bài toán lớn, giao 10 bộ, ngành, cơ quan chủ trì; đến ngày 3/11/2026, có 18 nhiệm vụ công nghệ chiến lược được phê duyệt.\n\nNhững kết quả sau gần hai năm triển khai Nghị quyết 57 cho thấy khoa học, công nghệ, đổi mới sáng tạo và chuyển đổi số đang từng bước chuyển từ định hướng chính sách sang các sản phẩm, ứng dụng cụ thể. [...] Công nghiệp công nghệ số cũng duy trì đà tăng trưởng. Năm 2025, doanh thu toàn ngành đạt 215 tỷ USD, kim ngạch xuất khẩu đạt 172 tỷ USD. Trong 10 tháng đầu năm 2026, doanh thu ước đạt 254,6 tỷ USD, xuất khẩu đạt 212 tỷ USD, tăng lần lượt 53% và 46,2% so với cùng kỳ năm trước. [...] Cùng với đó, công tác hoàn thiện thể chế được đẩy mạnh. Bộ Khoa học và Công nghệ đã chủ trì xy dựng, trình cấp có thẩm quyền ban hành hoặc ban hành theo thẩm quyền 195 văn bản quy phạm pháp luật. Quốc hội cũng thông qua 11 luật do Bộ Khoa học và Công nghệ được giao chủ trì soạn thảo.\n\nCác cơ chế, chính sách mới tập trung tháo gỡ điểm nghẽn, thúc đẩy nghiên cứu, phát triển và ứng dụng công nghệ, đồng thời tạo điều kiện để doanh nghiệp tham gia su hơn vào hoạt động đổi mới sáng tạo.",
+                    "score": 0.31852806
+                  },
+                  {
+                    "title": "Nâng cao năng lực công nghệ và đổi mới sáng tạo cho doanh nghiệp chế biến, chế tạo khu vực phía Nam - Báo điện tử Báo và phát thanh, truyền hình Vĩnh Long",
+                    "url": "https://baovinhlong.com.vn/khoa-hoc-cong-nghe/202611/nang-cao-nang-luc-cong-nghe-va-doi-moi-sang-tao-cho-doanh-nghiep-che-bien-che-tao-khu-vuc-phia-nam-d5a7c34",
+                    "source": "baovinhlong.com.vn",
+                    "summary": "Quán triệt tinh thần Nghị quyết số 57-NQ/TW của Bộ Chính trị, tỉnh xác định khoa học, công nghệ, đổi mới sáng tạo và chuyển đổi số phải gắn chặt với yêu cầu phát triển kinh tế - xã hội và nhu cầu thực tiễn của doanh nghiệp. Hoạt động quản lý nhà nước về khoa học và công nghệ không chỉ dừng ở việc triển khai nhiệm vụ, chính sách, mà cần chú trọng kết nối cung - cầu công nghệ, hỗ trợ doanh nghiệp xác định đúng vấn đề cần giải quyết và tiếp cận được giải pháp phù hợp. [...] Một trong những điểm nhấn của hội thảo là các tham luận gắn với những bài toán cụ thể của doanh nghiệp và lợi thế ngành hàng của tỉnh. Trong đó, đề xuất giải pháp công nghệ nng cao chất lượng sầu riêng xuất khẩu; nghiên cứu sử dụng vỏ dừa làm nhiên liệu sinh khối cho lò hơi công nghiệp, hướng đến kinh tế tuần hoàn trong ngành chế biến dừa; đề xuất quy trình, công nghệ chế biến khoai lang nhằm nng cao giá trị gia tăng; ứng dụng thiết bị, robot, công nghệ số và truy xuất nguồn gốc trong hoạt động [...] sáng tạo trước ngày 20/12/2026. Đy là bước đi thiết thực, tạo cơ sở để đánh giá đúng thực trạng, nhận diện những hạn chế và nhu cầu công nghệ của doanh nghiệp, từ đó đề xuất các giải pháp hỗ trợ và xy dựng lộ trình đổi mới công nghệ phù hợp với điều kiện thực tiễn của địa phương.",
+                    "score": 0.30194885
+                  },
+                  {
+                    "title": "Ngoại giao khoa học công nghệ mở rộng kết nối chuyên gia quốc tế",
+                    "url": "https://doanhnhan.congly.vn/ngoai-giao-khoa-hoc-cong-nghe-mo-rong-ket-noi-chuyen-gia-quoc-te.html",
+                    "source": "doanhnhan.congly.vn",
+                    "summary": "Đy là những trọng tm Bộ Khoa học và Công nghệ đang triển khai nhằm tăng cường khả năng tiếp cận, huy động và phát huy nguồn lực chuyên gia quốc tế phục vụ các nhiệm vụ phát triển của đất nước.\n\nKết nối chuyên gia với những bài toán lớn của đất nước [...] Trao đổi với báo chí về vấn đề này, Phó Vụ trưởng Vụ Hợp tác Quốc tế (Bộ KH&CN) Đỗ Quỳnh Hoa cho biết tinh thần này được thể hiện trong các nghị quyết như Nghị quyết 57, Nghị quyết 59 và Nghị quyết 06 vừa được ban hành. Trong đó, ngoại giao khoa học công nghệ được xác định là một trọng tm, có vai trò đột phá trong thu hút nguồn lực phục vụ phát triển khoa học công nghệ, đổi mới sáng tạo và chuyển đổi số.\n\nĐổi mới phương thức thu hút chuyên gia quốc tế [...] Cùng với việc đa dạng hóa phương thức hợp tác, xy dựng cơ sở dữ liệu và mạng lưới chuyên gia theo lĩnh vực chuyên môn cũng được chú trọng. Bộ Ngoại giao đang chủ trì xy dựng cơ sở dữ liệu mạng lưới chuyên gia tri thức trong các lĩnh vực. Bộ Khoa học và Công nghệ đã có chương trình chuyên gia tri thức trong lĩnh vực trí tuệ nhn tạo, đồng thời kết nối xy dựng, triển khai mô hình với kỳ vọng có thể nhn rộng sang các mạng lưới chuyên gia ở những lĩnh vực khác.",
+                    "score": 0.29596242
+                  },
+                  {
+                    "title": "Ứng dụng công nghệ số, nâng tầm hiệu quả hoạt động của cơ quan dân cử",
+                    "url": "https://baothanhhoa.vn/ung-dung-cong-nghe-so-nang-tam-hieu-qua-hoat-dong-cua-co-quan-dan-cu-308536.htm",
+                    "source": "baothanhhoa.vn",
+                    "summary": "Phó Bí thư Thường trực Tỉnh ủy, Chủ tịch HĐND tỉnh Nguyễn Hồng Phong truyền đạt chuyên đề.\n\nĐồng chí nhấn mạnh, chuyển đổi số không đơn thuần là việc đưa công nghệ vào xử lý công việc mà quan trọng hơn là đổi mới tư duy, phương thức lãnh đạo, quản lý, điều hành và tổ chức thực hiện nhiệm vụ. [...] Việc đẩy mạnh ứng dụng công nghệ số và AI không chỉ là đổi mới công cụ, phương tiện làm việc mà còn là đổi mới tư duy, phương thức hoạt động của HĐND, hướng tới xy dựng cơ quan dn cử hiện đại, chuyên nghiệp, hoạt động thực chất, hiệu lực, hiệu quả, ngày càng gần dn, sát dn và vì lợi ích của Nhn dn.\n\nPhó Bí thư Thường trực Tỉnh ủy, Chủ tịch HĐND tỉnh Nguyễn Hồng Phong truyền đạt chuyên đề. [...] ứng dụng công nghệ số và trí tuệ nhn tạo nhằm nng cao chất lượng, hiệu quả hoạt động của HĐND các cấp, nhất là HĐND cấp xã trong bối cảnh triển khai mô hình chính quyền địa phương 2 cấp.",
+                    "score": 0.25225553
+                  },
+                  {
+                    "title": "RISC - V và chip A.I, cơ hội làm chủ công nghệ | Công nghệ và đời sống | 10/11/2026",
+                    "url": "https://hanoionline.vn/risc-v-va-chip-ai-co-hoi-lam-chu-cong-nghe-cong-nghe-va-doi-song-10-11-2026-246261109120139799.htm",
+                    "source": "hanoionline.vn",
+                    "summary": "Đổi mới sáng tạo không chỉ được đo bằng những công nghệ mới mà còn bằng khả năng đưa công nghệ vào thực tiễn, giải quyết các bài toán của doanh nghiệp và nng cao chất lượng cuộc sống.\n\nTừ khoá\n\nCông nghệ và đời sống\n\n## Công nghệ đời sống\n\nĐưa tiện ích số đảm bảo an ninh đến từng người dn | Công nghệ và đời sống | 03/11/2026\n\n### Đưa tiện ích số đảm bảo an ninh đến từng người dn | Công nghệ và đời sống | 03/11/2026\n\nChương trình chuyên đề [...] Từ các trung tm dữ liệu đến những thiết bị nhỏ ở biên mạng, yêu cầu về hiệu năng, tốc độ xử lý và tiết kiệm điện, đang thúc đẩy một hướng phát triển mới của công nghệ bán dẫn: Chip AI tiết kiệm năng lượng.\n\nĐang tải thêm tin...\n\n Xem thêm [...] RISC - V và chip A.I, cơ hội làm chủ công nghệ | Công nghệ và đời sống | 10/11/2026\n\n## Tin liên quan\n\nĐưa tiện ích số đảm bảo an ninh đến từng người dn | Công nghệ và đời sống | 03/11/2026 \n\n### Đưa tiện ích số đảm bảo an ninh đến từng người dn | Công nghệ và đời sống | 03/11/2026\n\nĐể giúp người dn tiếp cận và sử dụng thành thạo các nền tảng số, xã Sơn Đồng vừa tổ chức Hội nghị ra mắt mô hình “Điểm hỗ trợ xã hội số”.\n\nTừ nền tảng số đến giá trị thực chất | Công nghệ và đời sống | 27/10/2026",
+                    "score": 0.22066174
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "assistant_text": "Here are the latest news updates in technology for today, November 10, 2026:\n\n1. **Khoa học công nghệ Việt Nam bứt tốc**  \n   [Read more](https://daidoanket.vn/khoa-hoc-cong-nghe-viet-nam-but-toc.html)  \n   Source: daidoanket.vn  \n   Summary: The Prime Minister has identified 20 major tasks, with 18 strategic technology missions approved as of November 3, 2026. The technology sector is showing significant growth, with projected revenues reaching $254.6 billion in 2026.\n\n2. **Nâng cao năng lực công nghệ và đổi mới sáng tạo cho doanh nghiệp chế biến, chế tạo khu vực phía Nam**  \n   [Read more](https://baovinhlong.com.vn/khoa-hoc-cong-nghe/202611/nang-cao-nang-luc-cong-nghe-va-doi-moi-sang-tao-cho-doanh-nghiep-che-bien-che-tao-khu-vuc-phia-nam-d5a7c34)  \n   Source: baovinhlong.com.vn  \n   Summary: The article discusses the importance of connecting technology supply and demand for businesses in the southern region, focusing on specific technological solutions for local industries.\n\n3. **Ngoại giao khoa học công nghệ mở rộng kết nối chuyên gia quốc tế**  \n   [Read more](https://doanhnhan.congly.vn/ngoai-giao-khoa-hoc-cong-nghe-mo-rong-ket-noi-chuyen-gia-quoc-te.html)  \n   Source: doanhnhan.congly.vn  \n   Summary: The Ministry of Science and Technology is enhancing international expert connections to support national development tasks, emphasizing the role of science diplomacy.\n\n4. **Ứng dụng công nghệ số, nâng tầm hiệu quả hoạt động của cơ quan dân cử**  \n   [Read more](https://baothanhhoa.vn/ung-dung-cong-nghe-so-nang-tam-hieu-qua-hoat-dong-cua-co-quan-dan-cu-308536.htm)  \n   Source: baothanhhoa.vn  \n   Summary: The article highlights the importance of digital transformation in improving the effectiveness of local government operations, focusing on the integration of AI and digital technologies.\n\n5. **RISC - V và chip A.I, cơ hội làm chủ công nghệ**  \n   [Read more](https://hanoionline.vn/risc-v-va-chip-ai-co-hoi-lam-chu-cong-nghe-cong-nghe-va-doi-song-10-11-2026-246261109120139799.htm)  \n   Source: hanoionline.vn  \n   Summary: This piece discusses the potential of RISC-V architecture and AI chips in driving innovation and addressing practical challenges in various industries.\n\nFeel free to check the links for more detailed information!",
+          "tool_calls": [],
+          "tool_results": []
+        }
+      ],
+      "tool_events": [
+        {
+          "tool": "lookup",
+          "args": {
+            "query": "công nghệ",
+            "topic": "news",
+            "timeframe": "day",
+            "max_results": 5
+          },
+          "result": {
+            "tool": "web_search",
+            "query": "công nghệ",
+            "topic": "news",
+            "timeframe": "day",
+            "items": [
+              {
+                "title": "Khoa học công nghệ Việt Nam bứt tốc",
+                "url": "https://daidoanket.vn/khoa-hoc-cong-nghe-viet-nam-but-toc.html",
+                "source": "daidoanket.vn",
+                "summary": "Cùng với đó, Thủ tướng Chính phủ đã xác định 20 bài toán lớn, giao 10 bộ, ngành, cơ quan chủ trì; đến ngày 3/11/2026, có 18 nhiệm vụ công nghệ chiến lược được phê duyệt.\n\nNhững kết quả sau gần hai năm triển khai Nghị quyết 57 cho thấy khoa học, công nghệ, đổi mới sáng tạo và chuyển đổi số đang từng bước chuyển từ định hướng chính sách sang các sản phẩm, ứng dụng cụ thể. [...] Công nghiệp công nghệ số cũng duy trì đà tăng trưởng. Năm 2025, doanh thu toàn ngành đạt 215 tỷ USD, kim ngạch xuất khẩu đạt 172 tỷ USD. Trong 10 tháng đầu năm 2026, doanh thu ước đạt 254,6 tỷ USD, xuất khẩu đạt 212 tỷ USD, tăng lần lượt 53% và 46,2% so với cùng kỳ năm trước. [...] Cùng với đó, công tác hoàn thiện thể chế được đẩy mạnh. Bộ Khoa học và Công nghệ đã chủ trì xy dựng, trình cấp có thẩm quyền ban hành hoặc ban hành theo thẩm quyền 195 văn bản quy phạm pháp luật. Quốc hội cũng thông qua 11 luật do Bộ Khoa học và Công nghệ được giao chủ trì soạn thảo.\n\nCác cơ chế, chính sách mới tập trung tháo gỡ điểm nghẽn, thúc đẩy nghiên cứu, phát triển và ứng dụng công nghệ, đồng thời tạo điều kiện để doanh nghiệp tham gia su hơn vào hoạt động đổi mới sáng tạo.",
+                "score": 0.31852806
+              },
+              {
+                "title": "Nâng cao năng lực công nghệ và đổi mới sáng tạo cho doanh nghiệp chế biến, chế tạo khu vực phía Nam - Báo điện tử Báo và phát thanh, truyền hình Vĩnh Long",
+                "url": "https://baovinhlong.com.vn/khoa-hoc-cong-nghe/202611/nang-cao-nang-luc-cong-nghe-va-doi-moi-sang-tao-cho-doanh-nghiep-che-bien-che-tao-khu-vuc-phia-nam-d5a7c34",
+                "source": "baovinhlong.com.vn",
+                "summary": "Quán triệt tinh thần Nghị quyết số 57-NQ/TW của Bộ Chính trị, tỉnh xác định khoa học, công nghệ, đổi mới sáng tạo và chuyển đổi số phải gắn chặt với yêu cầu phát triển kinh tế - xã hội và nhu cầu thực tiễn của doanh nghiệp. Hoạt động quản lý nhà nước về khoa học và công nghệ không chỉ dừng ở việc triển khai nhiệm vụ, chính sách, mà cần chú trọng kết nối cung - cầu công nghệ, hỗ trợ doanh nghiệp xác định đúng vấn đề cần giải quyết và tiếp cận được giải pháp phù hợp. [...] Một trong những điểm nhấn của hội thảo là các tham luận gắn với những bài toán cụ thể của doanh nghiệp và lợi thế ngành hàng của tỉnh. Trong đó, đề xuất giải pháp công nghệ nng cao chất lượng sầu riêng xuất khẩu; nghiên cứu sử dụng vỏ dừa làm nhiên liệu sinh khối cho lò hơi công nghiệp, hướng đến kinh tế tuần hoàn trong ngành chế biến dừa; đề xuất quy trình, công nghệ chế biến khoai lang nhằm nng cao giá trị gia tăng; ứng dụng thiết bị, robot, công nghệ số và truy xuất nguồn gốc trong hoạt động [...] sáng tạo trước ngày 20/12/2026. Đy là bước đi thiết thực, tạo cơ sở để đánh giá đúng thực trạng, nhận diện những hạn chế và nhu cầu công nghệ của doanh nghiệp, từ đó đề xuất các giải pháp hỗ trợ và xy dựng lộ trình đổi mới công nghệ phù hợp với điều kiện thực tiễn của địa phương.",
+                "score": 0.30194885
+              },
+              {
+                "title": "Ngoại giao khoa học công nghệ mở rộng kết nối chuyên gia quốc tế",
+                "url": "https://doanhnhan.congly.vn/ngoai-giao-khoa-hoc-cong-nghe-mo-rong-ket-noi-chuyen-gia-quoc-te.html",
+                "source": "doanhnhan.congly.vn",
+                "summary": "Đy là những trọng tm Bộ Khoa học và Công nghệ đang triển khai nhằm tăng cường khả năng tiếp cận, huy động và phát huy nguồn lực chuyên gia quốc tế phục vụ các nhiệm vụ phát triển của đất nước.\n\nKết nối chuyên gia với những bài toán lớn của đất nước [...] Trao đổi với báo chí về vấn đề này, Phó Vụ trưởng Vụ Hợp tác Quốc tế (Bộ KH&CN) Đỗ Quỳnh Hoa cho biết tinh thần này được thể hiện trong các nghị quyết như Nghị quyết 57, Nghị quyết 59 và Nghị quyết 06 vừa được ban hành. Trong đó, ngoại giao khoa học công nghệ được xác định là một trọng tm, có vai trò đột phá trong thu hút nguồn lực phục vụ phát triển khoa học công nghệ, đổi mới sáng tạo và chuyển đổi số.\n\nĐổi mới phương thức thu hút chuyên gia quốc tế [...] Cùng với việc đa dạng hóa phương thức hợp tác, xy dựng cơ sở dữ liệu và mạng lưới chuyên gia theo lĩnh vực chuyên môn cũng được chú trọng. Bộ Ngoại giao đang chủ trì xy dựng cơ sở dữ liệu mạng lưới chuyên gia tri thức trong các lĩnh vực. Bộ Khoa học và Công nghệ đã có chương trình chuyên gia tri thức trong lĩnh vực trí tuệ nhn tạo, đồng thời kết nối xy dựng, triển khai mô hình với kỳ vọng có thể nhn rộng sang các mạng lưới chuyên gia ở những lĩnh vực khác.",
+                "score": 0.29596242
+              },
+              {
+                "title": "Ứng dụng công nghệ số, nâng tầm hiệu quả hoạt động của cơ quan dân cử",
+                "url": "https://baothanhhoa.vn/ung-dung-cong-nghe-so-nang-tam-hieu-qua-hoat-dong-cua-co-quan-dan-cu-308536.htm",
+                "source": "baothanhhoa.vn",
+                "summary": "Phó Bí thư Thường trực Tỉnh ủy, Chủ tịch HĐND tỉnh Nguyễn Hồng Phong truyền đạt chuyên đề.\n\nĐồng chí nhấn mạnh, chuyển đổi số không đơn thuần là việc đưa công nghệ vào xử lý công việc mà quan trọng hơn là đổi mới tư duy, phương thức lãnh đạo, quản lý, điều hành và tổ chức thực hiện nhiệm vụ. [...] Việc đẩy mạnh ứng dụng công nghệ số và AI không chỉ là đổi mới công cụ, phương tiện làm việc mà còn là đổi mới tư duy, phương thức hoạt động của HĐND, hướng tới xy dựng cơ quan dn cử hiện đại, chuyên nghiệp, hoạt động thực chất, hiệu lực, hiệu quả, ngày càng gần dn, sát dn và vì lợi ích của Nhn dn.\n\nPhó Bí thư Thường trực Tỉnh ủy, Chủ tịch HĐND tỉnh Nguyễn Hồng Phong truyền đạt chuyên đề. [...] ứng dụng công nghệ số và trí tuệ nhn tạo nhằm nng cao chất lượng, hiệu quả hoạt động của HĐND các cấp, nhất là HĐND cấp xã trong bối cảnh triển khai mô hình chính quyền địa phương 2 cấp.",
+                "score": 0.25225553
+              },
+              {
+                "title": "RISC - V và chip A.I, cơ hội làm chủ công nghệ | Công nghệ và đời sống | 10/11/2026",
+                "url": "https://hanoionline.vn/risc-v-va-chip-ai-co-hoi-lam-chu-cong-nghe-cong-nghe-va-doi-song-10-11-2026-246261109120139799.htm",
+                "source": "hanoionline.vn",
+                "summary": "Đổi mới sáng tạo không chỉ được đo bằng những công nghệ mới mà còn bằng khả năng đưa công nghệ vào thực tiễn, giải quyết các bài toán của doanh nghiệp và nng cao chất lượng cuộc sống.\n\nTừ khoá\n\nCông nghệ và đời sống\n\n## Công nghệ đời sống\n\nĐưa tiện ích số đảm bảo an ninh đến từng người dn | Công nghệ và đời sống | 03/11/2026\n\n### Đưa tiện ích số đảm bảo an ninh đến từng người dn | Công nghệ và đời sống | 03/11/2026\n\nChương trình chuyên đề [...] Từ các trung tm dữ liệu đến những thiết bị nhỏ ở biên mạng, yêu cầu về hiệu năng, tốc độ xử lý và tiết kiệm điện, đang thúc đẩy một hướng phát triển mới của công nghệ bán dẫn: Chip AI tiết kiệm năng lượng.\n\nĐang tải thêm tin...\n\n Xem thêm [...] RISC - V và chip A.I, cơ hội làm chủ công nghệ | Công nghệ và đời sống | 10/11/2026\n\n## Tin liên quan\n\nĐưa tiện ích số đảm bảo an ninh đến từng người dn | Công nghệ và đời sống | 03/11/2026 \n\n### Đưa tiện ích số đảm bảo an ninh đến từng người dn | Công nghệ và đời sống | 03/11/2026\n\nĐể giúp người dn tiếp cận và sử dụng thành thạo các nền tảng số, xã Sơn Đồng vừa tổ chức Hội nghị ra mắt mô hình “Điểm hỗ trợ xã hội số”.\n\nTừ nền tảng số đến giá trị thực chất | Công nghệ và đời sống | 27/10/2026",
+                "score": 0.22066174
+              }
+            ]
+          }
+        }
+      ],
+      "ended_at": "2026-11-10T12:39:06"
+    }
+  ]
+}

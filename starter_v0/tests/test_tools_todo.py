@@ -10,6 +10,7 @@ Rules:
 """
 from __future__ import annotations
 
+from pathlib import Path
 import pytest
 
 from conftest import FakeResponse  # noqa: F401  (you will need it)
@@ -110,13 +111,35 @@ def test_policy_instruction_like_lines_go_to_untrusted_text() -> None:
 #   2. bad / missing input from the model (empty string, wrong type, out-of-enum value)
 #   3. failure path (missing key, HTTP error, timeout) -> returns error dict, does not raise
 
-def test_my_new_tool_happy_path() -> None:
-    pytest.skip(TODO)
+def test_export_md_happy_path(tmp_path, monkeypatch) -> None:
+    export_tool = TOOL_FUNCTIONS["export_md"]
+    result = export_tool(filename="ai_report.md", content="Nội dung nghiên cứu chi tiết", title="Báo cáo AI")
+    assert result["status"] == "success"
+    assert result["filename"] == "ai_report.md"
+    assert result["bytes_written"] > 0
+    saved_path = Path(result["file_path"])
+    assert saved_path.exists()
+    content = saved_path.read_text(encoding="utf-8")
+    assert "# Báo cáo AI" in content
+    assert "Nội dung nghiên cứu chi tiết" in content
 
 
-def test_my_new_tool_bad_input_from_model() -> None:
-    pytest.skip(TODO)
+def test_export_md_auto_extension_and_default_name() -> None:
+    export_tool = TOOL_FUNCTIONS["export_md"]
+    # Tự động thêm đuôi .md nếu người dùng quên
+    res1 = export_tool(filename="my_notes", content="Ghi chú test")
+    assert res1["status"] == "success"
+    assert res1["filename"] == "my_notes.md"
+
+    # Tự sinh tên file nếu để trống
+    res2 = export_tool(filename="", content="Ghi chú không tên")
+    assert res2["status"] == "success"
+    assert res2["filename"].startswith("report_")
+    assert res2["filename"].endswith(".md")
 
 
-def test_my_new_tool_failure_returns_error_dict() -> None:
-    pytest.skip(TODO)
+def test_export_md_empty_content_returns_safe_error() -> None:
+    export_tool = TOOL_FUNCTIONS["export_md"]
+    result = export_tool(filename="empty.md", content="")
+    assert result["status"] == "error"
+    assert "không được để trống" in result["message"]

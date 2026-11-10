@@ -2,6 +2,306 @@
   "dataset_id": "day04_v2_research_group",
   "dataset_role": "group",
   "description": "Case do NHÓM tự viết thêm để cover thêm trường hợp. Mỗi case cần: id, phase='B', query HOẶC turns, failure_type (thuộc allowed_failure_types), và expect (tool_calls[...] hoặc no_tool=true). Nên kèm metadata.what_it_tests.",
-  "allowed_failure_types": ["wrong_tool", "wrong_arg_value", "wrong_boundary", "unnecessary_tool", "out_of_scope", "missing_info"],
-  "cases": []
+  "allowed_failure_types": [
+    "wrong_tool",
+    "wrong_arg_value",
+    "wrong_boundary",
+    "unnecessary_tool",
+    "out_of_scope",
+    "missing_info"
+  ],
+  "cases": [
+    {
+      "id": "G01_dat_format_thread",
+      "phase": "B",
+      "suite": "group",
+      "query": "Mình đã có sẵn 3 tin, không cần tìm kiếm hay kiểm chứng: OpenAI ra GPT-5, Google ra Gemini 3, Meta mở mã nguồn Llama 4. Hãy soạn thành thread, chỉ trình bày nội dung thôi chứ không đăng lên đâu cả.",
+      "failure_type": "wrong_tool",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "format",
+            "args": {
+              "template": "thread"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "author": "PhamNguyenTatDat",
+        "difficulty": "easy",
+        "what_it_tests": "Dữ liệu đã có sẵn trong request + yêu cầu trình bày dạng thread → format(template=thread), không gọi lookup/fetch."
+      }
+    },
+    {
+      "id": "G02_dat_format_template_correction",
+      "phase": "B",
+      "suite": "group",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Mình có 2 tin: Anthropic ra Claude 4, OpenAI hạ giá API."
+        },
+        {
+          "role": "user",
+          "content": "Tổng hợp thành digest dạng sections giúp mình."
+        },
+        {
+          "role": "user",
+          "content": "Đổi sang dạng bullet cho gọn."
+        }
+      ],
+      "failure_type": "wrong_arg_value",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "format",
+            "args": {
+              "template": "bullets"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "author": "PhamNguyenTatDat",
+        "difficulty": "medium",
+        "what_it_tests": "Multi-turn correction: template sections ở lượt 2 bị đổi thành bullets ở lượt 3; chỉ chấm template của lượt cuối."
+      }
+    },
+    {
+      "id": "G03_newest_papers_sort",
+      "phase": "B",
+      "suite": "group",
+      "query": "Tìm 3 paper arXiv mới được đăng gần đây nhất về multimodal agents",
+      "failure_type": "wrong_arg_value",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "papers",
+            "args": {
+              "max_results": 3,
+              "sort_by": "submittedDate"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "arg_papers_sort_and_limit",
+        "difficulty": "medium",
+        "what_it_tests": "'mới được đăng gần đây nhất' → papers với sort_by=submittedDate (không phải relevance mặc định), max_results=3; không dùng lookup."
+      }
+    },
+    {
+      "id": "G04_papers_then_read_text",
+      "phase": "B",
+      "suite": "group",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Tìm giúp mình paper Attention Is All You Need"
+        },
+        {
+          "role": "assistant",
+          "content": "Mình tìm được paper 'Attention Is All You Need' (Vaswani et al., 2017), arXiv ID 1706.03762: https://arxiv.org/abs/1706.03762"
+        },
+        {
+          "role": "user",
+          "content": "Đọc giúp mình 3 trang đầu của paper đó"
+        }
+      ],
+      "failure_type": "wrong_tool",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "paper_text",
+            "args": {
+              "max_pages": 3
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "multiturn_papers_to_paper_text",
+        "difficulty": "hard",
+        "what_it_tests": "Lượt cuối muốn ĐỌC nội dung paper đã tìm ở lượt trước → paper_text, max_pages=3; không gọi lại papers, không dùng fetch. Không chấm arxiv_url vì tool nhận cả ID '1706.03762' lẫn URL arxiv.org/abs/... (eval so khớp chính xác nên ghi 1 dạng sẽ đánh trượt dạng còn lại)."
+      }
+    },
+    {
+      "id": "G05_web_search_month_timeframe",
+      "phase": "B",
+      "suite": "group",
+      "query": "Tin tức nổi bật về DeepSeek trong tháng này có gì?",
+      "failure_type": "wrong_arg_value",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "lookup",
+            "args": {
+              "query": "DeepSeek",
+              "topic": "news",
+              "timeframe": "month"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "arg_timeframe_month",
+        "difficulty": "medium",
+        "what_it_tests": "'trong tháng này' -> timeframe=month, tin tức -> topic=news, query ngắn gọn DeepSeek."
+      }
+    },
+    {
+      "id": "G06_multiturn_research_then_export",
+      "phase": "B",
+      "suite": "group",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Tìm kiếm các tin tức mới nhất về OpenAI trong tuần này."
+        },
+        {
+          "role": "user",
+          "content": "Tổng hợp lại các ý chính giúp mình."
+        },
+        {
+          "role": "user",
+          "content": "Hãy xuất toàn bộ bản báo cáo này ra file markdown với tên openai_report.md nhé."
+        }
+      ],
+      "failure_type": "wrong_tool",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "export_md",
+            "args": {
+              "filename": "openai_report.md"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "multiturn_export_report",
+        "difficulty": "medium",
+        "what_it_tests": "Sau khi nghiên cứu ở các lượt trước, ở lượt cuối yêu cầu lưu file md -> model phải route đúng tool mới export_md với filename='openai_report.md'."
+      }
+    },
+    {
+      "id": "G07_name_to_handle_no_clarify",
+      "phase": "B",
+      "suite": "group",
+      "query": "Bài đăng mới nhất của Satya Nadella là gì?",
+      "failure_type": "missing_info",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "timeline",
+            "args": {
+              "screenname": "satyanadella"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "name_to_handle",
+        "difficulty": "medium",
+        "what_it_tests": "Người dùng đã nêu rõ tên người nổi tiếng → gọi timeline với handle satyanadella, KHÔNG hỏi lại bằng clarify (chống hồi quy over-clarify)."
+      }
+    },
+    {
+      "id": "G08_multi_switch_to_web_only",
+      "phase": "B",
+      "suite": "group",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Tìm tweet về Claude"
+        },
+        {
+          "role": "user",
+          "content": "Thôi, bỏ mạng xã hội, tìm tin tức trên web đi"
+        },
+        {
+          "role": "user",
+          "content": "Vẫn chủ đề Claude, trong tuần này"
+        }
+      ],
+      "failure_type": "unnecessary_tool",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "lookup",
+            "args": {
+              "query": "Claude",
+              "topic": "news",
+              "timeframe": "week"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "multiturn_switch_source",
+        "difficulty": "hard",
+        "what_it_tests": "Người dùng đã bỏ nguồn mạng xã hội → chỉ gọi lookup, KHÔNG gọi thừa social_search; carry chủ đề Claude + timeframe=week."
+      }
+    },
+    {
+      "id": "G09_policy_source_citation",
+      "phase": "B",
+      "suite": "group",
+      "query": "Theo chính sách nội bộ của công ty, khi trích dẫn nguồn trong báo cáo thì phải làm thế nào?",
+      "failure_type": "wrong_arg_value",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "policy",
+            "args": {
+              "policy_area": "source_citation"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "route_policy",
+        "difficulty": "medium",
+        "what_it_tests": "Hỏi về quy định NỘI BỘ → dùng policy với policy_area=source_citation, không dùng lookup (web) hay trả lời từ trí nhớ."
+      }
+    },
+    {
+      "id": "G10_multi_social_top_carryover",
+      "phase": "B",
+      "suite": "group",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Tìm tweet về OpenAI"
+        },
+        {
+          "role": "user",
+          "content": "Lấy loại phổ biến nhất nhé"
+        },
+        {
+          "role": "user",
+          "content": "Chỉ cần 3 tweet thôi"
+        }
+      ],
+      "failure_type": "wrong_arg_value",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "social_search",
+            "args": {
+              "query": "OpenAI",
+              "search_type": "Top",
+              "limit": 3
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "multiturn_carry_args",
+        "difficulty": "hard",
+        "what_it_tests": "Carry nhiều tham số qua 3 lượt: query=OpenAI (lượt 1), search_type=Top (lượt 2, 'phổ biến nhất'), limit=3 (lượt 3)."
+      }
+    }
+  ]
 }
