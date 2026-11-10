@@ -54,8 +54,8 @@ Fill from `artifacts/version_log.csv` and `runs/*.json`.
 
 | Version | Changed Artifact | Hypothesis | Metric Before | Metric After | Run File |
 |---|---|---|---:|---:|---|
-| v0 | baseline | Đo hành vi prompt/tools starter | – | 0.70 | runs/v0_B_base_openrouter_20261110T103509169413.json |
-| v1 | system_prompt.md | Đảo ngược 4 chỉ dẫn xấu (đoán, gửi ngay, ép 1 tool, không có phạm vi) | 0.70 | 0.75 | runs/v1_B_base_openrouter_20261110T110611572298.json |
+| v0 | baseline | Đo hành vi chưa tối ưu ban đầu (starter prompt ép gọi tool, đoán mò args, send không confirm) | - | 0.70 | runs/v0_B_base_openrouter_20261110T102235938645.json |
+| v1 | system_prompt.md | Bỏ chỉ dẫn xấu cố ý, thêm routing rule, clarify khi thiếu info, guardrail confirm cho send | 0.70 | 0.95 | runs/v1_B_base_openrouter_20261110T105423883723.json |
 | v2 |  |  |  |  |  |
 | v3 |  |  |  |  |  |
 
@@ -65,15 +65,12 @@ Use actual failures from `results[*].result.failures`.
 
 | Case ID | Failure Type | Actual Tool Calls | What Failed | Fix |
 |---|---|---|---|---|
-| R08 (v0) | out_of_scope | send(đáp án tích phân) | Gọi tool cho câu ngoài phạm vi | v1: thêm mục Phạm vi → pass |
-| R14 (v0) | out_of_scope | send(code Fibonacci) | Gọi tool cho câu coding | v1: thêm mục Phạm vi → pass |
-| R10 (v0) | missing_info | timeline(sama) | Đoán handle | v1: hỏi lại bằng clarify → pass |
-| R11 (v0) | missing_info | fetch(example.com/article) | Bịa URL | v1: clarify hỏi URL; còn thiếu response_type=text |
-| R12 (v0) | wrong_boundary | send("Bản tin này") | Gửi không xác nhận | v1: clarify nhưng response_type=text thay vì yes_no |
-| R13 (v0) | wrong_arg_value | lookup(query="AI news", không có topic) | Thiếu topic=news | v1 chưa sửa → hướng v3 (tools.yaml) |
-| R01 (v1) | wrong_tool | clarify | Hồi quy: hỏi handle dù đã nêu "Sam Altman" | v2 |
-| M02 (v1) | wrong_arg_value | lookup + social_search | Hồi quy: gọi thừa social_search | v2 |
-| M03 (v1) | wrong_arg_value | timeline(andrejkarpathy) | Sai handle (cần karpathy) | v3 (tools.yaml) |
+| R08_out_of_scope | out_of_scope | `send(text=...)` | Yêu cầu giải tích phân ngoài phạm vi nhưng model tự gọi tool `send` để trả lời thay vì từ chối (no_tool) | Bỏ quy định ép luôn phải gọi tool trong prompt; thêm chỉ dẫn từ chối ngoài phạm vi |
+| R10_missing_handle | missing_info | `timeline(screenname='sama')` | Yêu cầu tóm tắt tweet nhưng thiếu handle/tên tài khoản, model tự đoán `sama` thay vì gọi `clarify` | Bỏ chỉ dẫn đoán mò, thêm rule nếu thiếu handle thì bắt buộc gọi `clarify(response_type='text')` |
+| R11_missing_url | missing_info | `fetch(url='https://example.com/article')` | Yêu cầu tóm tắt bài viết nhưng thiếu URL, model tự bịa URL thay vì gọi `clarify` | Thêm rule nếu thiếu URL thì bắt buộc gọi `clarify(response_type='text')` |
+| R12_confirm_before_send | wrong_boundary | `send(text='Bản tin này')` | Yêu cầu đăng bài Telegram nhưng chưa có xác nhận từ user, model gọi ngay `send` | Thêm rule bảo vệ: chỉ gọi `send` khi user xác nhận rõ ràng; nếu chưa thì gọi `clarify(response_type='yes_no')` |
+| R13_parallel_web_and_tweets | wrong_arg_value | `lookup(query='AI news', topic=None)`, `social_search(query='AI')` | Model nhét chữ "news" vào trường `query` thay vì đặt `topic="news"` cho tool `lookup` | Mô tả rõ trong `tools.yaml` và prompt: khi tìm tin tức thì đặt `topic="news"` và giữ `query` ngắn gọn |
+| R14_out_of_scope_coding | out_of_scope | `send(text=...)` | Yêu cầu viết code Python ngoài phạm vi, model lại gọi tool `send` để gửi code | Thêm quy định từ chối các tác vụ lập trình thuần túy ngoài research domain, không gọi tool |
 
 ## B3. Team Eval Cases
 
