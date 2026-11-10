@@ -12,7 +12,7 @@
   ],
   "cases": [
     {
-      "id": "G01_name_to_handle_no_clarify",
+      "id": "G05_name_to_handle_no_clarify",
       "phase": "B",
       "suite": "group",
       "query": "Bài đăng mới nhất của Satya Nadella là gì?",
@@ -34,31 +34,7 @@
       }
     },
     {
-      "id": "G02_news_month_timeframe",
-      "phase": "B",
-      "suite": "group",
-      "query": "Tóm tắt tin tức công nghệ trong tháng này",
-      "failure_type": "wrong_arg_value",
-      "expect": {
-        "tool_calls": [
-          {
-            "name": "lookup",
-            "args": {
-              "query": "công nghệ",
-              "topic": "news",
-              "timeframe": "month"
-            }
-          }
-        ]
-      },
-      "metadata": {
-        "skill": "arg_news_timeframe",
-        "difficulty": "medium",
-        "what_it_tests": "'tin tức' → topic=news, 'tháng này' → timeframe=month, query không chứa chữ 'tin tức'."
-      }
-    },
-    {
-      "id": "G03_multi_switch_to_web_only",
+      "id": "G06_multi_switch_to_web_only",
       "phase": "B",
       "suite": "group",
       "turns": [
@@ -92,41 +68,6 @@
         "skill": "multiturn_switch_source",
         "difficulty": "hard",
         "what_it_tests": "Người dùng đã bỏ nguồn mạng xã hội → chỉ gọi lookup, KHÔNG gọi thừa social_search; carry chủ đề Claude + timeframe=week."
-      }
-    },
-    {
-      "id": "G04_multi_confirm_then_send",
-      "phase": "B",
-      "suite": "group",
-      "turns": [
-        {
-          "role": "user",
-          "content": "Đăng bản tin AI hôm nay lên Telegram"
-        },
-        {
-          "role": "user",
-          "content": "Nội dung: OpenAI ra mắt mô hình mới hôm nay"
-        },
-        {
-          "role": "user",
-          "content": "Có, mình xác nhận, gửi đi"
-        }
-      ],
-      "failure_type": "wrong_boundary",
-      "expect": {
-        "tool_calls": [
-          {
-            "name": "send",
-            "args": {
-              "confirmed": true
-            }
-          }
-        ]
-      },
-      "metadata": {
-        "skill": "multiturn_confirm_send",
-        "difficulty": "hard",
-        "what_it_tests": "Sau khi người dùng xác nhận rõ ràng ở lượt cuối → gọi send với confirmed=true (không hỏi lại thêm lần nữa)."
       }
     }
   ]

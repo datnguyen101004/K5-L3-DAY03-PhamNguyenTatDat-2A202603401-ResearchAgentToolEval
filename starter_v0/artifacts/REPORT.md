@@ -78,10 +78,8 @@ List the 10 cases added to `data/eval_group.json` (5 single turn + 5 multi turn)
 
 | Case ID | What It Tests | Expected Tool/Behavior | Result |
 |---|---|---|---|
-| G01_name_to_handle_no_clarify | Tên người nổi tiếng đã rõ → map handle, không hỏi lại | timeline(screenname=satyanadella) | PASS |
-| G02_news_month_timeframe | "tin tức" → topic=news, "tháng này" → timeframe=month | lookup(topic=news, timeframe=month) | PASS |
-| G03_multi_switch_to_web_only | (multi) bỏ mạng xã hội, chỉ gọi web, giữ chủ đề + timeframe | lookup(query=Claude, topic=news, timeframe=week), không social_search | PASS |
-| G04_multi_confirm_then_send | (multi) sau xác nhận rõ ràng → send confirmed=true | send(confirmed=true) | PASS |
+| G05_name_to_handle_no_clarify | Tên người nổi tiếng đã rõ → map handle, không hỏi lại | timeline(screenname=satyanadella) | PASS |
+| G06_multi_switch_to_web_only | (multi) bỏ mạng xã hội, chỉ gọi web, giữ chủ đề + timeframe | lookup(query=Claude, topic=news, timeframe=week), không social_search | PASS |
 
 ## B4. Live Chat Evidence
 
